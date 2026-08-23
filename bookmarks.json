@@ -73,5 +73,10 @@
     "id": "19ec972f-168f-41ae-a6d8-b7074a4caac9",
     "name": "Market Signals",
     "url": "https://market-signal-alpha.vercel.app"
+  },
+  {
+    "id": "7e221b30-db79-4b70-abf4-1479e3f70bf9",
+    "name": "Company Guide",
+    "url": "https://wcomp.fnguide.com"
   }
 ]
