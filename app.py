@@ -1,4 +1,5 @@
 import streamlit as st
+import streamlit.components.v1 as components
 import json
 import os
 import uuid
@@ -217,55 +218,10 @@ if 'edit_id' not in st.session_state:
 if 'delete_id' not in st.session_state:
     st.session_state.delete_id = None
 
-# Handle Query Parameters for actions
-qp = st.query_params
-if "action" in qp:
-    action = qp["action"]
-    item_id = qp.get("id", None)
-    
-    if action == "edit" and item_id:
-        st.session_state.edit_id = item_id
-        st.query_params.clear()
-        st.rerun()
-        
-    elif action == "delete" and item_id:
-        st.session_state.delete_id = item_id
-        st.query_params.clear()
-        st.rerun()
-        
-    elif action == "confirm_delete" and item_id:
-        # Find item and delete it
-        bookmarks = st.session_state.bookmarks
-        item_to_del = next((x for x in bookmarks if x["id"] == item_id), None)
-        if item_to_del:
-            bookmarks.remove(item_to_del)
-            save_bookmarks()
-        st.session_state.delete_id = None
-        st.query_params.clear()
-        st.rerun()
-        
-    elif action == "cancel_delete":
-        st.session_state.delete_id = None
-        st.query_params.clear()
-        st.rerun()
-        
-    elif action == "move_left" and item_id:
-        bookmarks = st.session_state.bookmarks
-        idx = next((i for i, x in enumerate(bookmarks) if x["id"] == item_id), None)
-        if idx is not None and idx > 0:
-            bookmarks[idx], bookmarks[idx - 1] = bookmarks[idx - 1], bookmarks[idx]
-            save_bookmarks()
-        st.query_params.clear()
-        st.rerun()
-        
-    elif action == "move_right" and item_id:
-        bookmarks = st.session_state.bookmarks
-        idx = next((i for i, x in enumerate(bookmarks) if x["id"] == item_id), None)
-        if idx is not None and idx < len(bookmarks) - 1:
-            bookmarks[idx], bookmarks[idx + 1] = bookmarks[idx + 1], bookmarks[idx]
-            save_bookmarks()
-        st.query_params.clear()
-        st.rerun()
+# Declare Custom Drag-and-Drop Component
+parent_dir = os.path.dirname(os.path.abspath(__file__))
+dnd_grid_path = os.path.join(parent_dir, "dnd_component")
+dnd_grid = components.declare_component("dnd_grid", path=dnd_grid_path)
 
 # Helper to normalize URL
 def clean_url(url):
@@ -380,61 +336,55 @@ if search_query.strip() != "":
 if len(filtered_bookmarks) == 0:
     st.info("등록된 북마크가 없습니다. 왼쪽 관리 패널에서 북마크를 생성하거나 백업 파일을 불러오세요.")
 else:
-    # Grid config: 4 cards per row
-    cols_per_row = 4
+    # Render the custom Drag-and-Drop Grid Component
+    event = dnd_grid(bookmarks=filtered_bookmarks, delete_id=st.session_state.delete_id, key="dnd_grid_component")
     
-    # Iterate through bookmarks in chunks of cols_per_row
-    for r in range(0, len(filtered_bookmarks), cols_per_row):
-        row_items = filtered_bookmarks[r:r+cols_per_row]
-        cols = st.columns(cols_per_row)
+    # Process events returned by the component
+    if event is not None:
+        action = event.get("action")
+        item_id = event.get("id")
         
-        for idx, item in enumerate(row_items):
-            # Calculate absolute index in the main list
-            abs_idx = st.session_state.bookmarks.index(item)
+        if action == "edit" and item_id:
+            st.session_state.edit_id = item_id
+            st.rerun()
             
-            with cols[idx]:
-                # Check if this card is currently in delete-confirmation mode
-                if st.session_state.delete_id == item['id']:
-                    st.markdown(
-                        f"""
-                        <div class="bookmark-card delete-confirm-card">
-                            <div class="confirm-message">정말 삭제할까요?</div>
-                            <div class="confirm-actions">
-                                <a class="confirm-btn yes-btn" href="?action=confirm_delete&id={item['id']}" target="_self">예</a>
-                                <a class="confirm-btn no-btn" href="?action=cancel_delete" target="_self">아니오</a>
-                            </div>
-                        </div>
-                        """,
-                        unsafe_allow_html=True
-                    )
-                else:
-                    # Construct toolbar buttons dynamically based on position
-                    if abs_idx > 0:
-                        left_btn = f'<a class="toolbar-btn" href="?action=move_left&id={item["id"]}" target="_self" title="왼쪽으로 이동">◀️</a>'
-                    else:
-                        left_btn = '<a class="toolbar-btn disabled" href="#" onclick="return false;">🚫</a>'
-                        
-                    if abs_idx < len(st.session_state.bookmarks) - 1:
-                        right_btn = f'<a class="toolbar-btn" href="?action=move_right&id={item["id"]}" target="_self" title="오른쪽으로 이동">▶️</a>'
-                    else:
-                        right_btn = '<a class="toolbar-btn disabled" href="#" onclick="return false;">🚫</a>'
-                        
-                    st.markdown(
-                        f"""
-                        <div class="bookmark-card">
-                            <div class="bookmark-title">
-                                <a class="bookmark-link" href="{item['url']}" target="_blank" title="{item['name']}">{item['name']}</a>
-                            </div>
-                            <div class="bookmark-toolbar">
-                                {left_btn}
-                                <a class="toolbar-btn" href="?action=edit&id={item['id']}" target="_self" title="수정">✏️</a>
-                                <a class="toolbar-btn" href="?action=delete&id={item['id']}" target="_self" title="삭제">🗑️</a>
-                                {right_btn}
-                            </div>
-                        </div>
-                        """,
-                        unsafe_allow_html=True
-                    )
+        elif action == "delete" and item_id:
+            st.session_state.delete_id = item_id
+            st.rerun()
+            
+        elif action == "confirm_delete" and item_id:
+            # Find item and delete it
+            bookmarks = st.session_state.bookmarks
+            item_to_del = next((x for x in bookmarks if x["id"] == item_id), None)
+            if item_to_del:
+                bookmarks.remove(item_to_del)
+                save_bookmarks()
+            st.session_state.delete_id = None
+            st.rerun()
+            
+        elif action == "cancel_delete":
+            st.session_state.delete_id = None
+            st.rerun()
+            
+        elif action == "reorder":
+            new_order = event.get("order", [])
+            # Map items to the new order
+            bookmarks_dict = {item["id"]: item for item in st.session_state.bookmarks}
+            reordered_bookmarks = []
+            
+            # First, add the items in the new order
+            for iid in new_order:
+                if iid in bookmarks_dict:
+                    reordered_bookmarks.append(bookmarks_dict[iid])
+            
+            # If there are any items not in new_order (e.g. filtered out by search), append them at the end
+            for item in st.session_state.bookmarks:
+                if item["id"] not in new_order:
+                    reordered_bookmarks.append(item)
+                    
+            st.session_state.bookmarks = reordered_bookmarks
+            save_bookmarks()
+            st.rerun()
 
 # 6. Page Footer
 st.markdown("---")
