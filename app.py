@@ -177,6 +177,12 @@ st.markdown("""
     /* Center and simplify the file uploader dropzone */
     [data-testid="stFileUploader"] {
         padding: 0 !important;
+        margin-top: 0px !important;
+        margin-bottom: 10px !important;
+    }
+    
+    [data-testid="stDownloadButton"] {
+        margin-bottom: 10px !important;
     }
     
     [data-testid="stFileUploaderDropzone"] {
@@ -205,37 +211,44 @@ st.markdown("""
         display: none !important;
     }
     
-    /* Customize the file upload button to match download_button exactly */
+    /* Customize both buttons to match exactly */
+    [data-testid="stDownloadButton"] button,
     [data-testid="stFileUploaderDropzone"] button {
         width: 100% !important;
         height: 38px !important;
-        display: flex !important;
+        min-height: 38px !important;
+        max-height: 38px !important;
+        padding: 0px 12px !important;
+        line-height: 36px !important;
+        display: inline-flex !important;
         justify-content: center !important;
         align-items: center !important;
         text-align: center !important;
         background-color: #334155 !important;
         color: #f8fafc !important;
         border: 1px solid #475569 !important;
-        padding: 6px 12px !important;
         border-radius: 6px !important;
         margin: 0 !important;
         cursor: pointer !important;
         transition: all 0.2s !important;
         box-sizing: border-box !important;
+        font-size: 0.85rem !important;
+        font-weight: 600 !important;
     }
     
+    [data-testid="stDownloadButton"] button:hover,
     [data-testid="stFileUploaderDropzone"] button:hover {
         background-color: #475569 !important;
         border-color: #64748b !important;
         color: #ffffff !important;
     }
     
-    /* Hide the original label inside the button ("Browse files" / "Upload") */
+    /* Hide the original label inside the uploader button */
     [data-testid="stFileUploaderDropzone"] button span {
         display: none !important;
     }
     
-    /* Insert new label "백업파일 가져오기 (JSON)" into the button */
+    /* Insert new label "백업파일 가져오기 (JSON)" into the uploader button */
     [data-testid="stFileUploaderDropzone"] button::after {
         content: "📤 백업파일 가져오기 (JSON)" !important;
         font-size: 0.85rem !important;
