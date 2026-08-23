@@ -185,15 +185,29 @@ st.markdown("""
         margin-bottom: 10px !important;
     }
     
+    /* Make the file uploader dropzone container look exactly like the download button */
     [data-testid="stFileUploaderDropzone"] {
-        background-color: transparent !important;
-        border: none !important;
+        background-color: #334155 !important;
+        border: 1px solid #475569 !important;
+        border-radius: 6px !important;
         padding: 0 !important;
+        height: 42px !important;
+        min-height: 42px !important;
+        max-height: 42px !important;
         display: flex !important;
-        flex-direction: column !important;
         align-items: center !important;
         justify-content: center !important;
         text-align: center !important;
+        cursor: pointer !important;
+        transition: all 0.2s !important;
+        box-sizing: border-box !important;
+        position: relative !important;
+        overflow: hidden !important;
+    }
+    
+    [data-testid="stFileUploaderDropzone"]:hover {
+        background-color: #475569 !important;
+        border-color: #64748b !important;
     }
     
     /* Center vertical arrangement of elements inside dropzone */
@@ -204,6 +218,8 @@ st.markdown("""
         justify-content: center !important;
         gap: 0 !important;
         width: 100% !important;
+        height: 100% !important;
+        position: relative !important;
     }
     
     /* Hide native drag icon and Drag & Drop texts before the upload button */
@@ -211,11 +227,9 @@ st.markdown("""
         display: none !important;
     }
     
-    /* Customize both buttons to match exactly (with slightly larger height and padding for premium feel) */
+    /* Style the download button to be 42px high and have correct styles */
     .stDownloadButton button,
-    [data-testid="stDownloadButton"] button,
-    [data-testid="stFileUploaderDropzone"] button,
-    [data-testid="stFileUploader"] button {
+    [data-testid="stDownloadButton"] button {
         width: 100% !important;
         height: 42px !important;
         min-height: 42px !important;
@@ -239,24 +253,39 @@ st.markdown("""
     }
     
     .stDownloadButton button:hover,
-    [data-testid="stDownloadButton"] button:hover,
-    [data-testid="stFileUploaderDropzone"] button:hover,
-    [data-testid="stFileUploader"] button:hover {
+    [data-testid="stDownloadButton"] button:hover {
         background-color: #475569 !important;
         border-color: #64748b !important;
         color: #ffffff !important;
     }
     
-    /* Hide the original label inside the uploader button */
-    [data-testid="stFileUploaderDropzone"] button span {
-        display: none !important;
+    /* Make the file uploader button completely transparent but clickable overlay */
+    [data-testid="stFileUploaderDropzone"] button {
+        position: absolute !important;
+        top: 0 !important;
+        left: 0 !important;
+        width: 100% !important;
+        height: 100% !important;
+        opacity: 0 !important; /* Fully transparent */
+        margin: 0 !important;
+        padding: 0 !important;
+        cursor: pointer !important;
+        z-index: 10 !important;
     }
     
-    /* Insert new label "백업파일 가져오기 (JSON)" into the uploader button */
-    [data-testid="stFileUploaderDropzone"] button::after {
+    /* Render label "백업파일 가져오기 (JSON)" centered on the dropzone container itself */
+    [data-testid="stFileUploaderDropzone"]::after {
         content: "📤 백업파일 가져오기 (JSON)" !important;
+        color: #f8fafc !important;
         font-size: 0.85rem !important;
         font-weight: 600 !important;
+        position: absolute !important;
+        pointer-events: none !important; /* Let clicks pass through to the invisible button */
+        left: 50% !important;
+        top: 50% !important;
+        transform: translate(-50%, -50%) !important;
+        white-space: nowrap !important;
+        z-index: 5 !important;
     }
     
     /* Hide the limit details text completely */
