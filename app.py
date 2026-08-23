@@ -362,7 +362,7 @@ with st.sidebar:
     
     # B. Backup & Restore Section (Import/Export JSON)
     st.subheader("💾 데이터 백업 및 복원")
-    st.caption("Streamlit Cloud 서버가 재부팅될 때를 대비해 북마크 데이터를 로컬에 백업해 두세요.")
+    st.caption("북마크 데이터를 로컬에 백업해 두세요.")
     
     # Export
     bookmarks_json_str = json.dumps(st.session_state.bookmarks, ensure_ascii=False, indent=2)
