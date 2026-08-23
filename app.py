@@ -249,7 +249,7 @@ st.markdown("""
         transition: all 0.2s !important;
         box-sizing: border-box !important;
         font-size: 0.85rem !important;
-        font-weight: 600 !important;
+        font-weight: normal !important;
     }
     
     .stDownloadButton button:hover,
@@ -278,7 +278,7 @@ st.markdown("""
         content: "📤 백업파일 가져오기 (JSON)" !important;
         color: #f8fafc !important;
         font-size: 0.85rem !important;
-        font-weight: 600 !important;
+        font-weight: normal !important;
         position: absolute !important;
         pointer-events: none !important; /* Let clicks pass through to the invisible button */
         left: 50% !important;
