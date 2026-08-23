@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Drag & Drop Bookmark Grid</title>
     <!-- Load SortableJS from CDN -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.15.0/Sortable.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.0/Sortable.min.js"></script>
     <style>
         body {
             margin: 0;
@@ -182,35 +182,22 @@
         <!-- Rendered dynamically -->
     </div>
 
+    <!-- Load Streamlit Component SDK JS (Automatically served by Streamlit server) -->
+    <script src="./streamlit-component-lib.js"></script>
     <script>
-        // 1. Communication helpers with Streamlit parent window
-        function sendHeight() {
-            window.parent.postMessage({
-                type: "streamlit:setFrameHeight",
-                height: document.body.scrollHeight
-            }, "*");
-        }
-
-        function sendValue(value) {
-            window.parent.postMessage({
-                type: "streamlit:setComponentValue",
-                value: value
-            }, "*");
-        }
-
-        // 2. Action trigger helper
+        // 1. Action trigger helper
         function onAction(actionName, itemId) {
-            sendValue({ action: actionName, id: itemId });
+            Streamlit.setComponentValue({ action: actionName, id: itemId });
         }
 
-        // 3. Render function
+        // 2. Render function
         function renderGrid(bookmarks, deleteId) {
             const grid = document.getElementById("grid");
             grid.innerHTML = ""; // Clear existing grid
 
-            if (bookmarks.length === 0) {
+            if (!bookmarks || bookmarks.length === 0) {
                 grid.innerHTML = '<div style="color: #64748b; text-align: center; grid-column: span 4; padding: 40px; font-size: 1.1rem;">등록된 북마크가 없습니다.</div>';
-                sendHeight();
+                Streamlit.setFrameHeight();
                 return;
             }
 
@@ -243,43 +230,42 @@
                 grid.appendChild(card);
             });
 
-            // 4. Initialize SortableJS
-            const sortable = new Sortable(grid, {
-                handle: '.drag-handle', // drag handle selector
-                animation: 250,
-                ghostClass: 'sortable-ghost',
-                forceFallback: false, // native drag-and-drop is smoother, fallback only if needed
-                onEnd: function (evt) {
-                    // Extract new order IDs
-                    const newOrder = [];
-                    const cards = grid.querySelectorAll(".bookmark-card");
-                    cards.forEach(card => {
-                        const id = card.getAttribute("data-id");
-                        if (id) newOrder.push(id);
-                    });
-                    sendValue({ action: "reorder", order: newOrder });
-                }
-            });
+            // 3. Initialize SortableJS
+            if (typeof Sortable !== 'undefined') {
+                const sortable = new Sortable(grid, {
+                    handle: '.drag-handle', // drag handle selector
+                    animation: 250,
+                    ghostClass: 'sortable-ghost',
+                    forceFallback: false,
+                    onEnd: function (evt) {
+                        // Extract new order IDs
+                        const newOrder = [];
+                        const cards = grid.querySelectorAll(".bookmark-card");
+                        cards.forEach(card => {
+                            const id = card.getAttribute("data-id");
+                            if (id) newOrder.push(id);
+                        });
+                        Streamlit.setComponentValue({ action: "reorder", order: newOrder });
+                    }
+                });
+            }
 
             // Trigger frame resize notification to Streamlit parent frame
-            setTimeout(sendHeight, 50);
+            setTimeout(function() {
+                Streamlit.setFrameHeight();
+            }, 50);
         }
 
-        // 5. Connect and listen to Streamlit parent rendering events
-        window.addEventListener("message", function(event) {
-            if (event.data.type === "streamlit:render") {
-                const args = event.data.args;
-                const bookmarks = args.bookmarks;
-                const deleteId = args.delete_id;
-                renderGrid(bookmarks, deleteId);
-            }
+        // 4. Connect and listen to Streamlit parent rendering events
+        Streamlit.events.addEventListener(Streamlit.RENDER_EVENT, function(event) {
+            const args = event.detail.args;
+            const bookmarks = args.bookmarks;
+            const deleteId = args.delete_id;
+            renderGrid(bookmarks, deleteId);
         });
 
-        // 6. Send ready signal to Streamlit parent to establish connection
-        window.parent.postMessage({
-            type: "streamlit:componentReady",
-            apiVersion: 1
-        }, "*");
+        // 5. Send ready signal to Streamlit parent to establish connection
+        Streamlit.setComponentReady();
     </script>
 </body>
 </html>
