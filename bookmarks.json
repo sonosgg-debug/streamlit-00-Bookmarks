@@ -1,0 +1,22 @@
+[
+  {
+    "id": "1",
+    "name": "네이버 페이 증권",
+    "url": "https://finance.naver.com"
+  },
+  {
+    "id": "2",
+    "name": "Yahoo Finance",
+    "url": "https://finance.yahoo.com"
+  },
+  {
+    "id": "3",
+    "name": "Investing.com (한국어)",
+    "url": "https://kr.investing.com"
+  },
+  {
+    "id": "4",
+    "name": "TradingView",
+    "url": "https://kr.tradingview.com"
+  }
+]
