@@ -99,7 +99,7 @@ html_template = """<!DOCTYPE html>
         }
 
         .bookmark-title {
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             font-weight: 700;
             text-align: center;
             margin-bottom: 6px;
@@ -141,7 +141,7 @@ html_template = """<!DOCTYPE html>
             text-align: center;
             text-decoration: none;
             flex: 1;
-            font-size: 0.7rem;
+            font-size: 0.65rem;
             transition: all 0.2s;
             display: flex;
             align-items: center;
@@ -174,7 +174,7 @@ html_template = """<!DOCTYPE html>
             font-weight: normal;
             color: #fca5a5;
             margin-bottom: 6px;
-            font-size: 0.75rem;
+            font-size: 0.7rem;
             text-align: center;
         }
 
@@ -190,7 +190,7 @@ html_template = """<!DOCTYPE html>
             text-align: center;
             border: none;
             font-weight: bold;
-            font-size: 0.7rem;
+            font-size: 0.65rem;
             transition: all 0.2s;
             cursor: pointer;
             box-sizing: border-box;
