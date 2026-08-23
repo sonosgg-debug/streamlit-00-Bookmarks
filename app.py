@@ -35,16 +35,18 @@ st.markdown("""
     }
     
     /* Card Container */
-    div[data-testid="stVerticalBlock"] > div:has(div.bookmark-card) {
+    .bookmark-card {
         background: linear-gradient(135deg, #1e293b, #0f172a);
         border: 1px solid #334155;
         border-radius: 12px;
         padding: 20px;
         box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
         transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        text-align: center;
+        margin-bottom: 20px;
     }
     
-    div[data-testid="stVerticalBlock"] > div:has(div.bookmark-card):hover {
+    .bookmark-card:hover {
         transform: translateY(-4px);
         border-color: #10b981; /* Emerald green highlight */
         box-shadow: 0 20px 25px -5px rgba(16, 185, 129, 0.1);
@@ -84,32 +86,91 @@ st.markdown("""
         font-weight: 800 !important;
     }
     
-    /* Customize Streamlit Buttons in toolbar */
-    div.row-widget.stButton > button {
+    /* Action toolbar */
+    .bookmark-toolbar {
+        display: flex;
+        justify-content: space-between;
+        gap: 8px;
+        margin-top: 15px;
+    }
+    
+    .toolbar-btn {
         background-color: #334155;
         color: #e2e8f0;
         border: 1px solid #475569;
         border-radius: 6px;
-        font-size: 0.85rem;
-        padding: 0.25rem 0.5rem;
+        padding: 6px;
+        text-align: center;
+        text-decoration: none;
+        flex: 1;
+        font-size: 0.9rem;
         transition: all 0.2s;
-        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
     
-    div.row-widget.stButton > button:hover {
+    .toolbar-btn:hover {
         background-color: #475569;
         color: #ffffff;
         border-color: #64748b;
     }
     
-    /* Confirmation Dialog styling */
-    .confirm-box {
-        background-color: #7f1d1d;
-        border: 1px solid #b91c1c;
-        border-radius: 8px;
-        padding: 10px;
+    .toolbar-btn.disabled {
+        background-color: #1e293b;
+        color: #475569;
+        border-color: #334155;
+        cursor: not-allowed;
+        pointer-events: none;
+    }
+    
+    /* Delete Confirmation Card */
+    .delete-confirm-card {
+        border-color: #b91c1c !important;
+        background: linear-gradient(135deg, #7f1d1d, #450a0a) !important;
+    }
+    
+    .confirm-message {
+        font-weight: bold;
+        color: #fca5a5;
+        margin-bottom: 15px;
+        font-size: 1.1rem;
+    }
+    
+    .confirm-actions {
+        display: flex;
+        gap: 10px;
+    }
+    
+    .confirm-btn {
+        flex: 1;
+        padding: 8px;
+        border-radius: 6px;
         text-align: center;
-        margin-top: 10px;
+        text-decoration: none;
+        font-weight: bold;
+        transition: all 0.2s;
+    }
+    
+    .yes-btn {
+        background-color: #b91c1c;
+        color: white;
+        border: 1px solid #ef4444;
+    }
+    
+    .yes-btn:hover {
+        background-color: #dc2626;
+    }
+    
+    .no-btn {
+        background-color: #475569;
+        color: #e2e8f0;
+        border: 1px solid #64748b;
+    }
+    
+    .no-btn:hover {
+        background-color: #64748b;
+        color: white;
     }
 </style>
 """, unsafe_allow_html=True)
@@ -148,6 +209,56 @@ if 'edit_id' not in st.session_state:
     st.session_state.edit_id = None
 if 'delete_id' not in st.session_state:
     st.session_state.delete_id = None
+
+# Handle Query Parameters for actions
+qp = st.query_params
+if "action" in qp:
+    action = qp["action"]
+    item_id = qp.get("id", None)
+    
+    if action == "edit" and item_id:
+        st.session_state.edit_id = item_id
+        st.query_params.clear()
+        st.rerun()
+        
+    elif action == "delete" and item_id:
+        st.session_state.delete_id = item_id
+        st.query_params.clear()
+        st.rerun()
+        
+    elif action == "confirm_delete" and item_id:
+        # Find item and delete it
+        bookmarks = st.session_state.bookmarks
+        item_to_del = next((x for x in bookmarks if x["id"] == item_id), None)
+        if item_to_del:
+            bookmarks.remove(item_to_del)
+            save_bookmarks()
+        st.session_state.delete_id = None
+        st.query_params.clear()
+        st.rerun()
+        
+    elif action == "cancel_delete":
+        st.session_state.delete_id = None
+        st.query_params.clear()
+        st.rerun()
+        
+    elif action == "move_left" and item_id:
+        bookmarks = st.session_state.bookmarks
+        idx = next((i for i, x in enumerate(bookmarks) if x["id"] == item_id), None)
+        if idx is not None and idx > 0:
+            bookmarks[idx], bookmarks[idx - 1] = bookmarks[idx - 1], bookmarks[idx]
+            save_bookmarks()
+        st.query_params.clear()
+        st.rerun()
+        
+    elif action == "move_right" and item_id:
+        bookmarks = st.session_state.bookmarks
+        idx = next((i for i, x in enumerate(bookmarks) if x["id"] == item_id), None)
+        if idx is not None and idx < len(bookmarks) - 1:
+            bookmarks[idx], bookmarks[idx + 1] = bookmarks[idx + 1], bookmarks[idx]
+            save_bookmarks()
+        st.query_params.clear()
+        st.rerun()
 
 # Helper to normalize URL
 def clean_url(url):
@@ -275,73 +386,48 @@ else:
             abs_idx = st.session_state.bookmarks.index(item)
             
             with cols[idx]:
-                # Wrap inside a div with bookmark-card class for CSS styling
-                st.markdown(f'<div class="bookmark-card">', unsafe_allow_html=True)
-                
-                # Render the clickable name card opening in a new tab
-                st.markdown(
-                    f'<div class="bookmark-title"><a class="bookmark-link" href="{item["url"]}" target="_blank" title="{item["name"]}">{item["name"]}</a></div>',
-                    unsafe_allow_html=True
-                )
-                
                 # Check if this card is currently in delete-confirmation mode
                 if st.session_state.delete_id == item['id']:
-                    st.markdown('<div class="confirm-box">정말 삭제할까요?</div>', unsafe_allow_html=True)
-                    col_yes, col_no = st.columns(2)
-                    with col_yes:
-                        if st.button("예", key=f"yes_{item['id']}", use_container_width=True):
-                            # Remove bookmark
-                            st.session_state.bookmarks.remove(item)
-                            save_bookmarks()
-                            st.session_state.delete_id = None
-                            st.rerun()
-                    with col_no:
-                        if st.button("아니오", key=f"no_{item['id']}", use_container_width=True):
-                            st.session_state.delete_id = None
-                            st.rerun()
+                    st.markdown(
+                        f"""
+                        <div class="bookmark-card delete-confirm-card">
+                            <div class="confirm-message">정말 삭제할까요?</div>
+                            <div class="confirm-actions">
+                                <a class="confirm-btn yes-btn" href="?action=confirm_delete&id={item['id']}" target="_self">예</a>
+                                <a class="confirm-btn no-btn" href="?action=cancel_delete" target="_self">아니오</a>
+                            </div>
+                        </div>
+                        """,
+                        unsafe_allow_html=True
+                    )
                 else:
-                    # Render Action Toolbar: ◀️, ✏️, 🗑️, ▶️
-                    tool_cols = st.columns([1, 1, 1, 1])
-                    
-                    # ◀️ Move Left button
-                    with tool_cols[0]:
-                        if abs_idx > 0:
-                            if st.button("◀️", key=f"move_left_{item['id']}", help="왼쪽으로 이동"):
-                                # Swap with previous element
-                                st.session_state.bookmarks[abs_idx], st.session_state.bookmarks[abs_idx - 1] = \
-                                    st.session_state.bookmarks[abs_idx - 1], st.session_state.bookmarks[abs_idx]
-                                save_bookmarks()
-                                st.rerun()
-                        else:
-                            # Disabled look/empty space if first element
-                            st.button("🚫", key=f"move_left_dis_{item['id']}", disabled=True)
-                            
-                    # ✏️ Edit button
-                    with tool_cols[1]:
-                        if st.button("✏️", key=f"edit_btn_{item['id']}", help="수정"):
-                            st.session_state.edit_id = item['id']
-                            st.rerun()
-                            
-                    # 🗑️ Delete button
-                    with tool_cols[2]:
-                        if st.button("🗑️", key=f"del_btn_{item['id']}", help="삭제"):
-                            st.session_state.delete_id = item['id']
-                            st.rerun()
-                            
-                    # ▶️ Move Right button
-                    with tool_cols[3]:
-                        if abs_idx < len(st.session_state.bookmarks) - 1:
-                            if st.button("▶️", key=f"move_right_{item['id']}", help="오른쪽으로 이동"):
-                                # Swap with next element
-                                st.session_state.bookmarks[abs_idx], st.session_state.bookmarks[abs_idx + 1] = \
-                                    st.session_state.bookmarks[abs_idx + 1], st.session_state.bookmarks[abs_idx]
-                                save_bookmarks()
-                                st.rerun()
-                        else:
-                            # Disabled look/empty space if last element
-                            st.button("🚫", key=f"move_right_dis_{item['id']}", disabled=True)
-                            
-                st.markdown('</div>', unsafe_allow_html=True)
+                    # Construct toolbar buttons dynamically based on position
+                    if abs_idx > 0:
+                        left_btn = f'<a class="toolbar-btn" href="?action=move_left&id={item["id"]}" target="_self" title="왼쪽으로 이동">◀️</a>'
+                    else:
+                        left_btn = '<a class="toolbar-btn disabled" href="#" onclick="return false;">🚫</a>'
+                        
+                    if abs_idx < len(st.session_state.bookmarks) - 1:
+                        right_btn = f'<a class="toolbar-btn" href="?action=move_right&id={item["id"]}" target="_self" title="오른쪽으로 이동">▶️</a>'
+                    else:
+                        right_btn = '<a class="toolbar-btn disabled" href="#" onclick="return false;">🚫</a>'
+                        
+                    st.markdown(
+                        f"""
+                        <div class="bookmark-card">
+                            <div class="bookmark-title">
+                                <a class="bookmark-link" href="{item['url']}" target="_blank" title="{item['name']}">{item['name']}</a>
+                            </div>
+                            <div class="bookmark-toolbar">
+                                {left_btn}
+                                <a class="toolbar-btn" href="?action=edit&id={item['id']}" target="_self" title="수정">✏️</a>
+                                <a class="toolbar-btn" href="?action=delete&id={item['id']}" target="_self" title="삭제">🗑️</a>
+                                {right_btn}
+                            </div>
+                        </div>
+                        """,
+                        unsafe_allow_html=True
+                    )
 
 # 6. Page Footer
 st.markdown("---")
