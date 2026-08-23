@@ -251,33 +251,108 @@
                 grid.appendChild(card);
             });
 
-            // 3. Initialize SortableJS
+            // 3. Initialize Drag & Drop
             if (typeof Sortable !== 'undefined') {
+                console.log("SortableJS loaded successfully. Initializing...");
                 const sortable = new Sortable(grid, {
                     handle: '.drag-handle', // drag handle selector
                     animation: 250,
                     ghostClass: 'sortable-ghost',
                     onEnd: function (evt) {
-                        // Extract new order IDs
-                        const newOrder = [];
-                        const cards = grid.querySelectorAll(".bookmark-card");
-                        cards.forEach(card => {
-                            const id = card.getAttribute("data-id");
-                            if (id) newOrder.push(id);
-                        });
-                        sendMessageToStreamlitClient("streamlit:setComponentValue", {
-                            value: { 
-                                action: "reorder", 
-                                order: newOrder,
-                                event_id: Date.now().toString() + "_" + Math.random().toString(36).substr(2, 9)
-                            }
-                        });
+                        triggerReorder();
                     }
                 });
+            } else {
+                console.warn("SortableJS CDN not loaded (possibly blocked by proxy/adblock). Falling back to native HTML5 Drag & Drop...");
+                initializeNativeDragAndDrop(grid);
             }
 
             // Adjust frame height automatically
             setTimeout(sendHeight, 50);
+        }
+
+        // Helper to trigger reorder event back to Streamlit
+        function triggerReorder() {
+            const grid = document.getElementById("grid");
+            const newOrder = [];
+            const cards = grid.querySelectorAll(".bookmark-card");
+            cards.forEach(card => {
+                const id = card.getAttribute("data-id");
+                if (id) newOrder.push(id);
+            });
+            sendMessageToStreamlitClient("streamlit:setComponentValue", {
+                value: { 
+                    action: "reorder", 
+                    order: newOrder,
+                    event_id: Date.now().toString() + "_" + Math.random().toString(36).substr(2, 9)
+                }
+            });
+        }
+
+        // Native HTML5 Drag and Drop fallback implementation
+        let dragSrcEl = null;
+
+        function initializeNativeDragAndDrop(grid) {
+            const cards = grid.querySelectorAll(".bookmark-card");
+            cards.forEach(card => {
+                card.setAttribute("draggable", "true");
+                card.addEventListener("dragstart", handleDragStart);
+                card.addEventListener("dragover", handleDragOver);
+                card.addEventListener("drop", handleDrop);
+                card.addEventListener("dragend", handleDragEnd);
+            });
+        }
+
+        function handleDragStart(e) {
+            this.style.opacity = '0.4';
+            dragSrcEl = this;
+            e.dataTransfer.effectAllowed = 'move';
+            e.dataTransfer.setData('text/plain', this.getAttribute('data-id'));
+        }
+
+        function handleDragOver(e) {
+            if (e.preventDefault) {
+                e.preventDefault();
+            }
+            e.dataTransfer.dropEffect = 'move';
+            return false;
+        }
+
+        function handleDrop(e) {
+            if (e.stopPropagation) {
+                e.stopPropagation();
+            }
+            if (dragSrcEl !== this) {
+                const draggedId = dragSrcEl.getAttribute('data-id');
+                const targetId = this.getAttribute('data-id');
+                
+                const grid = document.getElementById("grid");
+                const cards = Array.from(grid.querySelectorAll(".bookmark-card"));
+                const draggedIdx = cards.findIndex(c => c.getAttribute('data-id') === draggedId);
+                const targetIdx = cards.findIndex(c => c.getAttribute('data-id') === targetId);
+                
+                if (draggedIdx !== -1 && targetIdx !== -1) {
+                    const [removed] = cards.splice(draggedIdx, 1);
+                    cards.splice(targetIdx, 0, removed);
+                    
+                    const newOrder = cards.map(c => c.getAttribute('data-id'));
+                    sendMessageToStreamlitClient("streamlit:setComponentValue", {
+                        value: { 
+                            action: "reorder", 
+                            order: newOrder,
+                            event_id: Date.now().toString() + "_" + Math.random().toString(36).substr(2, 9)
+                        }
+                    });
+                }
+            }
+            return false;
+        }
+
+        function handleDragEnd(e) {
+            this.style.opacity = '1';
+            const grid = document.getElementById("grid");
+            const cards = grid.querySelectorAll(".bookmark-card");
+            cards.forEach(card => card.style.opacity = '1');
         }
 
         // 4. Connect and listen to Streamlit parent rendering events

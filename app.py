@@ -321,7 +321,7 @@ with st.sidebar:
 
 # 5. Main Dashboard Area
 st.title("📈 투자 정보 북마크 대시보드")
-st.markdown("자주 방문하는 투자 관련 웹사이트를 모아놓은 개인 대시보드입니다. 패널을 클릭하면 새 탭으로 즉시 이동합니다.")
+st.markdown("자주 방문하는 투자 관련 웹사이트를 모아놓은 개인 대시보드입니다. **패널(이름)을 클릭하면 새 탭으로 이동**하며, 각 카드의 **`☰` 핸들을 잡고 드래그(Drag & Drop)**하여 순서를 변경할 수 있습니다.")
 
 # A. Search / Filter bar
 search_query = st.text_input("🔍 북마크 검색", placeholder="이름으로 검색...")
