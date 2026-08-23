@@ -217,6 +217,8 @@ if 'edit_id' not in st.session_state:
     st.session_state.edit_id = None
 if 'delete_id' not in st.session_state:
     st.session_state.delete_id = None
+if 'last_processed_event_id' not in st.session_state:
+    st.session_state.last_processed_event_id = None
 
 # Declare Custom Drag-and-Drop Component
 parent_dir = os.path.dirname(os.path.abspath(__file__))
@@ -341,50 +343,56 @@ else:
     
     # Process events returned by the component
     if event is not None:
-        action = event.get("action")
-        item_id = event.get("id")
+        event_id = event.get("event_id")
         
-        if action == "edit" and item_id:
-            st.session_state.edit_id = item_id
-            st.rerun()
+        # Process only if this event has not been processed yet
+        if event_id != st.session_state.last_processed_event_id:
+            st.session_state.last_processed_event_id = event_id
             
-        elif action == "delete" and item_id:
-            st.session_state.delete_id = item_id
-            st.rerun()
+            action = event.get("action")
+            item_id = event.get("id")
             
-        elif action == "confirm_delete" and item_id:
-            # Find item and delete it
-            bookmarks = st.session_state.bookmarks
-            item_to_del = next((x for x in bookmarks if x["id"] == item_id), None)
-            if item_to_del:
-                bookmarks.remove(item_to_del)
+            if action == "edit" and item_id:
+                st.session_state.edit_id = item_id
+                st.rerun()
+                
+            elif action == "delete" and item_id:
+                st.session_state.delete_id = item_id
+                st.rerun()
+                
+            elif action == "confirm_delete" and item_id:
+                # Find item and delete it
+                bookmarks = st.session_state.bookmarks
+                item_to_del = next((x for x in bookmarks if x["id"] == item_id), None)
+                if item_to_del:
+                    bookmarks.remove(item_to_del)
+                    save_bookmarks()
+                st.session_state.delete_id = None
+                st.rerun()
+                
+            elif action == "cancel_delete":
+                st.session_state.delete_id = None
+                st.rerun()
+                
+            elif action == "reorder":
+                new_order = event.get("order", [])
+                # Map items to the new order
+                bookmarks_dict = {item["id"]: item for item in st.session_state.bookmarks}
+                reordered_bookmarks = []
+                
+                # First, add the items in the new order
+                for iid in new_order:
+                    if iid in bookmarks_dict:
+                        reordered_bookmarks.append(bookmarks_dict[iid])
+                
+                # If there are any items not in new_order (e.g. filtered out by search), append them at the end
+                for item in st.session_state.bookmarks:
+                    if item["id"] not in new_order:
+                        reordered_bookmarks.append(item)
+                        
+                st.session_state.bookmarks = reordered_bookmarks
                 save_bookmarks()
-            st.session_state.delete_id = None
-            st.rerun()
-            
-        elif action == "cancel_delete":
-            st.session_state.delete_id = None
-            st.rerun()
-            
-        elif action == "reorder":
-            new_order = event.get("order", [])
-            # Map items to the new order
-            bookmarks_dict = {item["id"]: item for item in st.session_state.bookmarks}
-            reordered_bookmarks = []
-            
-            # First, add the items in the new order
-            for iid in new_order:
-                if iid in bookmarks_dict:
-                    reordered_bookmarks.append(bookmarks_dict[iid])
-            
-            # If there are any items not in new_order (e.g. filtered out by search), append them at the end
-            for item in st.session_state.bookmarks:
-                if item["id"] not in new_order:
-                    reordered_bookmarks.append(item)
-                    
-            st.session_state.bookmarks = reordered_bookmarks
-            save_bookmarks()
-            st.rerun()
+                st.rerun()
 
 # 6. Page Footer
 st.markdown("---")

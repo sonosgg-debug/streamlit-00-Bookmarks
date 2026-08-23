@@ -196,7 +196,11 @@
         // Action trigger helper
         function onAction(actionName, itemId) {
             sendMessageToStreamlitClient("streamlit:setComponentValue", {
-                value: { action: actionName, id: itemId }
+                value: { 
+                    action: actionName, 
+                    id: itemId, 
+                    event_id: Date.now().toString() + "_" + Math.random().toString(36).substr(2, 9) 
+                }
             });
         }
 
@@ -262,7 +266,11 @@
                             if (id) newOrder.push(id);
                         });
                         sendMessageToStreamlitClient("streamlit:setComponentValue", {
-                            value: { action: "reorder", order: newOrder }
+                            value: { 
+                                action: "reorder", 
+                                order: newOrder,
+                                event_id: Date.now().toString() + "_" + Math.random().toString(36).substr(2, 9)
+                            }
                         });
                     }
                 });
