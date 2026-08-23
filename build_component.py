@@ -277,23 +277,14 @@ html_template = """<!DOCTYPE html>
                         </div>
                     `;
                 } else {
-                    // Check boundary positions to disable buttons
-                    const leftDisabled = (index === 0) ? 'disabled' : '';
-                    const rightDisabled = (index === bookmarks.length - 1) ? 'disabled' : '';
-                    
-                    const leftOnClick = (index === 0) ? 'onclick="return false;"' : `onclick="onAction('move_left', '${item.id}')"`;
-                    const rightOnClick = (index === bookmarks.length - 1) ? 'onclick="return false;"' : `onclick="onAction('move_right', '${item.id}')"`;
-
                     card.innerHTML = `
                         <div class="bookmark-title">
                             <a class="bookmark-link" href="${item.url}" target="_blank" title="${item.name}">${item.name}</a>
                         </div>
                         <div class="bookmark-toolbar">
                             <div class="drag-handle toolbar-btn" style="cursor: move;" title="드래그하여 순서 변경">☰</div>
-                            <button class="toolbar-btn ${leftDisabled}" ${leftOnClick} title="왼쪽으로 이동">◀️</button>
                             <button class="toolbar-btn" onclick="onAction('edit', '${item.id}')" title="수정">✏️</button>
                             <button class="toolbar-btn" onclick="onAction('delete', '${item.id}')" title="삭제">🗑️</button>
-                            <button class="toolbar-btn ${rightDisabled}" ${rightOnClick} title="오른쪽으로 이동">▶️</button>
                         </div>
                     `;
                 }
