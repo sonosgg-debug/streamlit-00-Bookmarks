@@ -173,6 +173,81 @@ st.markdown("""
         background-color: #64748b;
         color: white;
     }
+    
+    /* Center and simplify the file uploader dropzone */
+    [data-testid="stFileUploader"] {
+        padding: 0 !important;
+    }
+    
+    [data-testid="stFileUploaderDropzone"] {
+        background-color: #1e293b !important;
+        border: 1px dashed #475569 !important;
+        border-radius: 8px !important;
+        padding: 15px !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        justify-content: center !important;
+        text-align: center !important;
+    }
+    
+    /* Center vertical arrangement of elements inside dropzone */
+    [data-testid="stFileUploaderDropzone"] > div {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        justify-content: center !important;
+        gap: 6px !important;
+    }
+    
+    /* Hide native drag icon and Drag & Drop texts before the upload button */
+    [data-testid="stFileUploaderDropzone"] > div > *:not(button) {
+        display: none !important;
+    }
+    
+    /* Customize the file upload button */
+    [data-testid="stFileUploaderDropzone"] button {
+        width: 100% !important;
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+        text-align: center !important;
+        background-color: #334155 !important;
+        color: #f8fafc !important;
+        border: 1px solid #475569 !important;
+        padding: 6px 12px !important;
+        border-radius: 6px !important;
+        margin: 0 auto !important;
+        cursor: pointer !important;
+        transition: all 0.2s !important;
+    }
+    
+    [data-testid="stFileUploaderDropzone"] button:hover {
+        background-color: #475569 !important;
+        border-color: #64748b !important;
+    }
+    
+    /* Hide the original label inside the button ("Browse files" / "Upload") */
+    [data-testid="stFileUploaderDropzone"] button span {
+        display: none !important;
+    }
+    
+    /* Insert new label "백업 파일 가져오기 (JSON)" into the button */
+    [data-testid="stFileUploaderDropzone"] button::after {
+        content: "📤 백업 파일 가져오기 (JSON)" !important;
+        font-size: 0.85rem !important;
+        font-weight: 600 !important;
+    }
+    
+    /* Show and center align the limit details text (which comes AFTER the button) */
+    [data-testid="stFileUploaderDropzone"] button ~ * {
+        display: block !important;
+        text-align: center !important;
+        margin: 6px auto 0 auto !important;
+        font-size: 0.75rem !important;
+        color: #94a3b8 !important;
+        width: 100% !important;
+    }
 </style>
 """, unsafe_allow_html=True)
 
@@ -300,7 +375,7 @@ with st.sidebar:
     )
     
     # Import
-    uploaded_file = st.file_uploader("📤 백업 파일 가져오기 (JSON)", type=["json"])
+    uploaded_file = st.file_uploader("백업 파일 가져오기 (JSON)", type=["json"], label_visibility="collapsed")
     if uploaded_file is not None:
         try:
             imported_data = json.load(uploaded_file)
