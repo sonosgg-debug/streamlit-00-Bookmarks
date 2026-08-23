@@ -1,25 +1,5 @@
 [
   {
-    "id": "1",
-    "name": "네이버 페이 증권",
-    "url": "https://finance.naver.com"
-  },
-  {
-    "id": "2",
-    "name": "Yahoo Finance",
-    "url": "https://finance.yahoo.com"
-  },
-  {
-    "id": "3",
-    "name": "Investing.com (한국어)",
-    "url": "https://kr.investing.com"
-  },
-  {
-    "id": "4",
-    "name": "TradingView",
-    "url": "https://kr.tradingview.com"
-  },
-  {
     "id": "22962b59-0327-489f-8fd9-c9c949cede66",
     "name": "My Github",
     "url": "https://github.com"
@@ -78,5 +58,30 @@
     "id": "7e221b30-db79-4b70-abf4-1479e3f70bf9",
     "name": "Company Guide",
     "url": "https://wcomp.fnguide.com"
+  },
+  {
+    "id": "4",
+    "name": "TradingView",
+    "url": "https://kr.tradingview.com"
+  },
+  {
+    "id": "55500653-ec6c-466c-82bf-cb011d420065",
+    "name": "IndexerGo",
+    "url": "https://www.indexergo.com"
+  },
+  {
+    "id": "1",
+    "name": "Naver Pay 증권",
+    "url": "https://finance.naver.com"
+  },
+  {
+    "id": "2",
+    "name": "Yahoo Finance",
+    "url": "https://finance.yahoo.com"
+  },
+  {
+    "id": "3",
+    "name": "Investing.com",
+    "url": "https://kr.investing.com"
   }
 ]
