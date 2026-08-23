@@ -1,44 +1,42 @@
 @echo off
-chcp 65001 > nul
 :: Move to the directory where this batch file is located
 cd /d "%~dp0"
 
 echo ===================================================
-echo   íˆ¬ìž ë¶ë§ˆí¬ ëŒ€ì‹œë³´ë“œ - GitHub ìžë™ ë™ê¸°í™” ì‹œìž‘
+echo   ÅõÀÚ ºÏ¸¶Å© ´ë½Ãº¸µå - GitHub ÀÚµ¿ µ¿±âÈ­ ½ÃÀÛ
 echo ===================================================
 echo.
 
-echo [1/3] ë³€ê²½ëœ bookmarks.json íŒŒì¼ ìŠ¤í…Œì´ì§• ì¤‘...
+echo [1/3] º¯°æµÈ bookmarks.json ÆÄÀÏ ½ºÅ×ÀÌÂ¡ Áß...
 git add bookmarks.json
 if %ERRORLEVEL% neq 0 (
-    echo [ì—ëŸ¬] íŒŒì¼ ìŠ¤í…Œì´ì§•ì— ì‹¤íŒ¨í–ˆìŠµë‹ˆë‹¤. Git ì €ìž¥ì†Œ ì„¤ì •ì„ í™•ì¸í•´ ì£¼ì„¸ìš”.
+    echo [¿¡·¯] ÆÄÀÏ ½ºÅ×ÀÌÂ¡¿¡ ½ÇÆÐÇß½À´Ï´Ù. Git ÀúÀå¼Ò ¼³Á¤À» È®ÀÎÇØ ÁÖ¼¼¿ä.
     goto end
 )
 
-echo [2/3] ë³€ê²½ ì‚¬í•­ ì»¤ë°‹ ì¤‘...
-:: Commit only if there are changes. Git status check will tell us if there are modified files.
+echo [2/3] º¯°æ »çÇ× Ä¿¹Ô Áß...
 git diff-index --quiet HEAD -- bookmarks.json
 if %ERRORLEVEL% equ 0 (
-    echo [ì•Œë¦¼] ë³€ê²½ëœ ë¶ë§ˆí¬ ë‚´ìš©ì´ ì—†ìŠµë‹ˆë‹¤. ë™ê¸°í™”ë¥¼ ê±´ë„ˆëœë‹ˆë‹¤.
+    echo [¾Ë¸²] º¯°æµÈ ºÏ¸¶Å© ³»¿ëÀÌ ¾ø½À´Ï´Ù. µ¿±âÈ­¸¦ °Ç³Ê¶Ý´Ï´Ù.
     goto end
 )
 
 git commit -m "Auto-update bookmarks.json from backup"
 if %ERRORLEVEL% neq 0 (
-    echo [ì—ëŸ¬] ì»¤ë°‹ì— ì‹¤íŒ¨í–ˆìŠµë‹ˆë‹¤.
+    echo [¿¡·¯] Ä¿¹Ô¿¡ ½ÇÆÐÇß½À´Ï´Ù.
     goto end
 )
 
-echo [3/3] GitHub ì›ê²© ì €ìž¥ì†Œë¡œ ì—…ë¡œë“œ(Push) ì¤‘...
+echo [3/3] GitHub ¿ø°Ý ÀúÀå¼Ò·Î ¾÷·Îµå(Push) Áß...
 git push origin main
 if %ERRORLEVEL% neq 0 (
-    echo [ì—ëŸ¬] GitHub ì—…ë¡œë“œì— ì‹¤íŒ¨í–ˆìŠµë‹ˆë‹¤. ì¸í„°ë„· ì—°ê²°ì´ë‚˜ ê¶Œí•œì„ í™•ì¸í•´ ì£¼ì„¸ìš”.
+    echo [¿¡·¯] GitHub ¾÷·Îµå¿¡ ½ÇÆÐÇß½À´Ï´Ù. ÀÎÅÍ³Ý ¿¬°áÀÌ³ª ±ÇÇÑÀ» È®ÀÎÇØ ÁÖ¼¼¿ä.
     goto end
 )
 
 echo.
 echo ===================================================
-echo   â˜… ë¶ë§ˆí¬ ë™ê¸°í™” ì™„ë£Œ! Streamlit ì•±ì— ìžë™ ë°˜ì˜ë©ë‹ˆë‹¤.
+echo   ¡Ú ºÏ¸¶Å© µ¿±âÈ­ ¿Ï·á! Streamlit ¾Û¿¡ ÀÚµ¿ ¹Ý¿µµË´Ï´Ù.
 echo ===================================================
 
 :end
