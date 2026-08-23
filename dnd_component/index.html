@@ -182,12 +182,29 @@
         <!-- Rendered dynamically -->
     </div>
 
-    <!-- Load Streamlit Component SDK JS from CDN -->
-    <script src="https://cdn.jsdelivr.net/npm/streamlit-component-lib@2.0.0/dist/streamlit-component-lib.js"></script>
     <script>
-        // 1. Action trigger helper
+        // 1. Raw Message communication helper for Streamlit
+        function sendMessageToStreamlitClient(type, data) {
+            const message = {
+                ...data,
+                isStreamlitMessage: true,
+                type: type,
+            };
+            window.parent.postMessage(message, "*");
+        }
+
+        // Action trigger helper
         function onAction(actionName, itemId) {
-            Streamlit.setComponentValue({ action: actionName, id: itemId });
+            sendMessageToStreamlitClient("streamlit:setComponentValue", {
+                value: { action: actionName, id: itemId }
+            });
+        }
+
+        // Set frame height helper
+        function sendHeight() {
+            sendMessageToStreamlitClient("streamlit:setFrameHeight", {
+                height: document.body.scrollHeight
+            });
         }
 
         // 2. Render function
@@ -197,7 +214,7 @@
 
             if (!bookmarks || bookmarks.length === 0) {
                 grid.innerHTML = '<div style="color: #64748b; text-align: center; grid-column: span 4; padding: 40px; font-size: 1.1rem;">등록된 북마크가 없습니다.</div>';
-                Streamlit.setFrameHeight();
+                sendHeight();
                 return;
             }
 
@@ -236,7 +253,6 @@
                     handle: '.drag-handle', // drag handle selector
                     animation: 250,
                     ghostClass: 'sortable-ghost',
-                    forceFallback: false,
                     onEnd: function (evt) {
                         // Extract new order IDs
                         const newOrder = [];
@@ -245,27 +261,29 @@
                             const id = card.getAttribute("data-id");
                             if (id) newOrder.push(id);
                         });
-                        Streamlit.setComponentValue({ action: "reorder", order: newOrder });
+                        sendMessageToStreamlitClient("streamlit:setComponentValue", {
+                            value: { action: "reorder", order: newOrder }
+                        });
                     }
                 });
             }
 
-            // Trigger frame resize notification to Streamlit parent frame
-            setTimeout(function() {
-                Streamlit.setFrameHeight();
-            }, 50);
+            // Adjust frame height automatically
+            setTimeout(sendHeight, 50);
         }
 
         // 4. Connect and listen to Streamlit parent rendering events
-        Streamlit.events.addEventListener(Streamlit.RENDER_EVENT, function(event) {
-            const args = event.detail.args;
-            const bookmarks = args.bookmarks;
-            const deleteId = args.delete_id;
-            renderGrid(bookmarks, deleteId);
+        window.addEventListener("message", function(event) {
+            if (event.data.type === "streamlit:render") {
+                const args = event.data.args;
+                const bookmarks = args.bookmarks;
+                const deleteId = args.delete_id;
+                renderGrid(bookmarks, deleteId);
+            }
         });
 
-        // 5. Send ready signal to Streamlit parent to establish connection
-        Streamlit.setComponentReady();
+        // 5. Send ready signal to Streamlit parent (Start Handshake)
+        sendMessageToStreamlitClient("streamlit:componentReady", { apiVersion: 1 });
     </script>
 </body>
 </html>
