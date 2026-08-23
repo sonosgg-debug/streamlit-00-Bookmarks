@@ -321,7 +321,12 @@ with st.sidebar:
 
 # 5. Main Dashboard Area
 st.title("📈 투자 정보 북마크 대시보드")
-st.markdown("인공지능(AI)의 도움으로 구축한 투자 종목 스크리닝 프로그램과 자주 방문하는 웹사이트를 모아놓은 개인용 대시보드입니다.")
+st.markdown(
+    "<div style='font-size: 0.9rem; color: #94a3b8; margin-bottom: 15px;'>"
+    "인공지능(AI)의 도움으로 구축한 투자 종목 스크리닝 프로그램과 자주 방문하는 웹사이트를 모아놓은 개인용 대시보드입니다."
+    "</div>",
+    unsafe_allow_html=True
+)
 
 # A. Search / Filter bar
 search_query = st.text_input("🔍 북마크 검색", placeholder="이름으로 검색...")
