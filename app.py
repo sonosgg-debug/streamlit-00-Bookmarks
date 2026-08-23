@@ -182,15 +182,22 @@ def load_bookmarks():
     """Load bookmarks from file or fallback to session_state / defaults"""
     if 'bookmarks' not in st.session_state:
         if os.path.exists(DATA_FILE):
-            try:
-                with open(DATA_FILE, "r", encoding="utf-8") as f:
-                    st.session_state.bookmarks = json.load(f)
-            except Exception as e:
-                st.error(f"북마크 로드 중 오류 발생: {e}")
+            # Check if file is empty (0 bytes)
+            if os.path.getsize(DATA_FILE) == 0:
                 st.session_state.bookmarks = []
+                save_bookmarks()  # Self-heal the empty file
+            else:
+                try:
+                    with open(DATA_FILE, "r", encoding="utf-8") as f:
+                        st.session_state.bookmarks = json.load(f)
+                except Exception as e:
+                    st.error(f"북마크 로드 중 오류 발생 (초기화 및 복구 진행): {e}")
+                    st.session_state.bookmarks = []
+                    save_bookmarks()  # Self-heal the corrupted file
         else:
             # Fallback to empty list if no file exists
             st.session_state.bookmarks = []
+            save_bookmarks()
     return st.session_state.bookmarks
 
 def save_bookmarks():
