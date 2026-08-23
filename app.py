@@ -211,15 +211,17 @@ st.markdown("""
         display: none !important;
     }
     
-    /* Customize both buttons to match exactly */
+    /* Customize both buttons to match exactly (with slightly larger height and padding for premium feel) */
+    .stDownloadButton button,
     [data-testid="stDownloadButton"] button,
-    [data-testid="stFileUploaderDropzone"] button {
+    [data-testid="stFileUploaderDropzone"] button,
+    [data-testid="stFileUploader"] button {
         width: 100% !important;
-        height: 38px !important;
-        min-height: 38px !important;
-        max-height: 38px !important;
-        padding: 0px 12px !important;
-        line-height: 36px !important;
+        height: 42px !important;
+        min-height: 42px !important;
+        max-height: 42px !important;
+        padding: 0px 16px !important;
+        line-height: 40px !important;
         display: inline-flex !important;
         justify-content: center !important;
         align-items: center !important;
@@ -236,8 +238,10 @@ st.markdown("""
         font-weight: 600 !important;
     }
     
+    .stDownloadButton button:hover,
     [data-testid="stDownloadButton"] button:hover,
-    [data-testid="stFileUploaderDropzone"] button:hover {
+    [data-testid="stFileUploaderDropzone"] button:hover,
+    [data-testid="stFileUploader"] button:hover {
         background-color: #475569 !important;
         border-color: #64748b !important;
         color: #ffffff !important;
