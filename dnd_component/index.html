@@ -249,6 +249,7 @@
                             <a class="bookmark-link" href="${item.url}" target="_blank" title="${item.name}">${item.name}</a>
                         </div>
                         <div class="bookmark-toolbar">
+                            <div class="drag-handle toolbar-btn" style="cursor: move;" title="드래그하여 순서 변경">☰</div>
                             <button class="toolbar-btn ${leftDisabled}" ${leftOnClick} title="왼쪽으로 이동">◀️</button>
                             <button class="toolbar-btn" onclick="onAction('edit', '${item.id}')" title="수정">✏️</button>
                             <button class="toolbar-btn" onclick="onAction('delete', '${item.id}')" title="삭제">🗑️</button>
@@ -263,6 +264,7 @@
             if (typeof Sortable !== 'undefined') {
                 console.log("SortableJS loaded successfully. Initializing...");
                 const sortable = new Sortable(grid, {
+                    handle: '.drag-handle', // Restrict dragging to the drag handle
                     animation: 250,
                     ghostClass: 'sortable-ghost',
                     // Force fallback UI to bypass Chrome's hybrid touchscreen mouse blocks
