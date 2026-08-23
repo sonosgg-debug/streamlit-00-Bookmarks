@@ -180,10 +180,9 @@ st.markdown("""
     }
     
     [data-testid="stFileUploaderDropzone"] {
-        background-color: #1e293b !important;
-        border: 1px dashed #475569 !important;
-        border-radius: 8px !important;
-        padding: 15px !important;
+        background-color: transparent !important;
+        border: none !important;
+        padding: 0 !important;
         display: flex !important;
         flex-direction: column !important;
         align-items: center !important;
@@ -197,7 +196,8 @@ st.markdown("""
         flex-direction: column !important;
         align-items: center !important;
         justify-content: center !important;
-        gap: 6px !important;
+        gap: 0 !important;
+        width: 100% !important;
     }
     
     /* Hide native drag icon and Drag & Drop texts before the upload button */
@@ -205,9 +205,10 @@ st.markdown("""
         display: none !important;
     }
     
-    /* Customize the file upload button */
+    /* Customize the file upload button to match download_button exactly */
     [data-testid="stFileUploaderDropzone"] button {
         width: 100% !important;
+        height: 38px !important;
         display: flex !important;
         justify-content: center !important;
         align-items: center !important;
@@ -217,14 +218,16 @@ st.markdown("""
         border: 1px solid #475569 !important;
         padding: 6px 12px !important;
         border-radius: 6px !important;
-        margin: 0 auto !important;
+        margin: 0 !important;
         cursor: pointer !important;
         transition: all 0.2s !important;
+        box-sizing: border-box !important;
     }
     
     [data-testid="stFileUploaderDropzone"] button:hover {
         background-color: #475569 !important;
         border-color: #64748b !important;
+        color: #ffffff !important;
     }
     
     /* Hide the original label inside the button ("Browse files" / "Upload") */
@@ -232,21 +235,16 @@ st.markdown("""
         display: none !important;
     }
     
-    /* Insert new label "백업 파일 가져오기 (JSON)" into the button */
+    /* Insert new label "백업파일 가져오기 (JSON)" into the button */
     [data-testid="stFileUploaderDropzone"] button::after {
-        content: "📤 백업 파일 가져오기 (JSON)" !important;
+        content: "📤 백업파일 가져오기 (JSON)" !important;
         font-size: 0.85rem !important;
         font-weight: 600 !important;
     }
     
-    /* Show and center align the limit details text (which comes AFTER the button) */
+    /* Hide the limit details text completely */
     [data-testid="stFileUploaderDropzone"] button ~ * {
-        display: block !important;
-        text-align: center !important;
-        margin: 6px auto 0 auto !important;
-        font-size: 0.75rem !important;
-        color: #94a3b8 !important;
-        width: 100% !important;
+        display: none !important;
     }
 </style>
 """, unsafe_allow_html=True)
@@ -367,7 +365,7 @@ with st.sidebar:
     # Export
     bookmarks_json_str = json.dumps(st.session_state.bookmarks, ensure_ascii=False, indent=2)
     st.download_button(
-        label="📥 북마크 내보내기 (JSON)",
+        label="📥 백업파일 내보내기 (JSON)",
         data=bookmarks_json_str,
         file_name="bookmarks_backup.json",
         mime="application/json",
