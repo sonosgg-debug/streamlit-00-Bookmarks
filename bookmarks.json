@@ -20,19 +20,19 @@
     "url": "https://supabase.com/dashboard/org/qqpiydxsanpjijsofgyf"
   },
   {
-    "id": "36cd117a-8be0-4373-ba3d-d4c245eac6f0",
-    "name": "JustDrawLine",
-    "url": "https://app-01-drawline.streamlit.app"
-  },
-  {
     "id": "26c469bf-65cf-45e6-8e08-8105a8fc000f",
-    "name": "Cup&Handle",
+    "name": "William O'Neal",
     "url": "https://app-02-cuphandle.streamlit.app"
   },
   {
     "id": "304f7c82-c381-4b01-8f97-f68f1ea1987d",
     "name": "Mark Minervini",
     "url": "https://app-04-markminervini.streamlit.app"
+  },
+  {
+    "id": "36cd117a-8be0-4373-ba3d-d4c245eac6f0",
+    "name": "David Ryan",
+    "url": "https://app-01-drawline.streamlit.app"
   },
   {
     "id": "25a42fac-7a2c-42f7-90e6-83bbc46c590e",
