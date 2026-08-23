@@ -73,6 +73,18 @@ html_template = """<!DOCTYPE html>
             text-align: center;
             position: relative;
             box-sizing: border-box;
+            user-select: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+        }
+
+        .drag-handle {
+            touch-action: none;
+            user-select: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
         }
 
         .bookmark-card:hover {
