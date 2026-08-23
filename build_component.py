@@ -307,9 +307,8 @@ html_template = """<!DOCTYPE html>
                     handle: '.drag-handle', // Restrict dragging to the drag handle
                     animation: 250,
                     ghostClass: 'sortable-ghost',
-                    // Force fallback UI to bypass Chrome's hybrid touchscreen mouse blocks
-                    forceFallback: true,
-                    fallbackTolerance: 3, // Prevent accidental drags when clicking links/buttons
+                    // Use native HTML5 Drag and Drop for stable coordinates inside sandboxed iframes
+                    forceFallback: false,
                     onEnd: function (evt) {
                         triggerReorder();
                     }
