@@ -374,6 +374,22 @@ else:
                 st.session_state.delete_id = None
                 st.rerun()
                 
+            elif action == "move_left" and item_id:
+                bookmarks = st.session_state.bookmarks
+                idx = next((i for i, x in enumerate(bookmarks) if x["id"] == item_id), None)
+                if idx is not None and idx > 0:
+                    bookmarks[idx], bookmarks[idx - 1] = bookmarks[idx - 1], bookmarks[idx]
+                    save_bookmarks()
+                st.rerun()
+                
+            elif action == "move_right" and item_id:
+                bookmarks = st.session_state.bookmarks
+                idx = next((i for i, x in enumerate(bookmarks) if x["id"] == item_id), None)
+                if idx is not None and idx < len(bookmarks) - 1:
+                    bookmarks[idx], bookmarks[idx + 1] = bookmarks[idx + 1], bookmarks[idx]
+                    save_bookmarks()
+                st.rerun()
+                
             elif action == "reorder":
                 new_order = event.get("order", [])
                 # Map items to the new order
