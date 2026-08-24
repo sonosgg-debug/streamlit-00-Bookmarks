@@ -310,21 +310,16 @@ st.markdown("""
         display: none !important;
     }
     
-    /* Force 100% width and vertical flex stretching on all containers except radiogroup */
+    /* 1. Force 100% width on all stRadio parent and descendant wrapper containers */
     .stRadio,
+    .stRadio div,
     div[data-testid="stRadio"],
-    .stRadio > div,
-    div[data-testid="stRadio"] > div,
-    .stRadio > div > div:not([role="radiogroup"]),
-    div[data-testid="stRadio"] > div > div:not([role="radiogroup"]) {
+    div[data-testid="stRadio"] div {
         width: 100% !important;
         max-width: 100% !important;
-        display: flex !important;
-        flex-direction: column !important;
-        align-items: stretch !important;
     }
     
-    /* Stretch the radio buttons container horizontally to match the input fields' width */
+    /* 2. Stretch the options container horizontally and lay out as a flex row */
     .stRadio div[role="radiogroup"],
     div[data-testid="stRadio"] div[role="radiogroup"] {
         display: flex !important;
@@ -336,7 +331,7 @@ st.markdown("""
         gap: 0 !important;
     }
     
-    /* Convert radio labels into round colored swatches */
+    /* 3. Convert radio labels into round colored swatches */
     div[data-testid="stRadio"] div[role="radiogroup"] > label {
         width: 24px !important;
         height: 24px !important;
@@ -352,6 +347,13 @@ st.markdown("""
         box-sizing: border-box !important;
         transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s !important;
         position: relative !important;
+    }
+    
+    /* Override width for wrapper divs inside the labels to prevent stretching */
+    div[data-testid="stRadio"] div[role="radiogroup"] > label div {
+        width: auto !important;
+        max-width: none !important;
+        height: auto !important;
     }
     
     /* Highlight the selected swatch with a neutral white border and white checkmark icon */
