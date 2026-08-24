@@ -310,35 +310,33 @@ st.markdown("""
         display: none !important;
     }
     
-    /* 1. Force 100% width on all stRadio parent and descendant wrapper containers */
+    /* 1. Force 100% width on all stRadio parent containers */
     .stRadio,
-    .stRadio div,
     div[data-testid="stRadio"],
-    div[data-testid="stRadio"] div {
+    div[data-testid="stRadio"] > div,
+    div[data-testid="stRadio"] div[role="radiogroup"] {
         width: 100% !important;
         max-width: 100% !important;
     }
     
     /* 2. Stretch the options container horizontally and lay out as a flex row */
-    .stRadio div[role="radiogroup"],
     div[data-testid="stRadio"] div[role="radiogroup"] {
         display: flex !important;
         flex-direction: row !important;
         justify-content: space-between !important;
         align-items: center !important;
         width: 100% !important;
-        max-width: 100% !important;
         gap: 0 !important;
     }
     
-    /* 3. Convert radio labels into round colored swatches */
+    /* 3. Convert radio labels into round colored swatches and calculate spacing dynamically */
     div[data-testid="stRadio"] div[role="radiogroup"] > label {
         width: 24px !important;
         height: 24px !important;
         min-width: 24px !important;
         max-width: 24px !important;
         border-radius: 50% !important;
-        margin: 4px 0 !important;
+        margin: 4px calc((100% - 120px) / 4) 4px 0 !important;
         padding: 0 !important;
         display: inline-flex !important;
         justify-content: center !important;
@@ -347,6 +345,13 @@ st.markdown("""
         box-sizing: border-box !important;
         transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s !important;
         position: relative !important;
+        flex-shrink: 0 !important;
+    }
+    
+    /* Remove margin-right from the 5th (last) swatch so it touches the right edge */
+    div[data-testid="stRadio"] div[role="radiogroup"] > label:last-child,
+    div[data-testid="stRadio"] div[role="radiogroup"] > label:nth-child(5) {
+        margin-right: 0 !important;
     }
     
     /* Override width for wrapper divs inside the labels to prevent stretching */
