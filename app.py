@@ -310,22 +310,30 @@ st.markdown("""
         display: none !important;
     }
     
-    /* Force 100% width on all stRadio parent containers */
+    /* Force 100% width and vertical flex stretching on all containers except radiogroup */
+    .stRadio,
     div[data-testid="stRadio"],
-    div[data-testid="stRadio"] > div {
+    .stRadio > div,
+    div[data-testid="stRadio"] > div,
+    .stRadio > div > div:not([role="radiogroup"]),
+    div[data-testid="stRadio"] > div > div:not([role="radiogroup"]) {
         width: 100% !important;
         max-width: 100% !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: stretch !important;
     }
     
     /* Stretch the radio buttons container horizontally to match the input fields' width */
+    .stRadio div[role="radiogroup"],
     div[data-testid="stRadio"] div[role="radiogroup"] {
         display: flex !important;
+        flex-direction: row !important;
         justify-content: space-between !important;
         align-items: center !important;
         width: 100% !important;
         max-width: 100% !important;
         gap: 0 !important;
-        flex-direction: row !important;
     }
     
     /* Convert radio labels into round colored swatches */
