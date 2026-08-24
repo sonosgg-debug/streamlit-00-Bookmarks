@@ -312,11 +312,9 @@ st.markdown("""
     
     /* Force 100% width on all stRadio parent containers */
     div[data-testid="stRadio"],
-    div[data-testid="stRadio"] > div,
-    div[data-testid="stRadio"] > div > div {
+    div[data-testid="stRadio"] > div {
         width: 100% !important;
         max-width: 100% !important;
-        display: block !important;
     }
     
     /* Stretch the radio buttons container horizontally to match the input fields' width */
@@ -327,6 +325,7 @@ st.markdown("""
         width: 100% !important;
         max-width: 100% !important;
         gap: 0 !important;
+        flex-direction: row !important;
     }
     
     /* Convert radio labels into round colored swatches */
