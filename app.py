@@ -302,8 +302,11 @@ st.markdown("""
         display: none !important;
     }
     
-    /* Hide the radio button circle inputs and label texts for the Color radio key */
-    div[data-testid="stRadio"] div[role="radiogroup"] > label > div:first-child {
+    /* Hide the default circular radio checkmark buttons and label texts for the Color radio */
+    div[data-testid="stRadio"] div[role="radiogroup"] > label > div:not([data-testid="stMarkdownContainer"]) {
+        display: none !important;
+    }
+    div[data-testid="stRadio"] div[role="radiogroup"] > label input {
         display: none !important;
     }
     div[data-testid="stRadio"] div[role="radiogroup"] > label [data-testid="stMarkdownContainer"] {
@@ -325,13 +328,27 @@ st.markdown("""
         cursor: pointer !important;
         box-sizing: border-box !important;
         transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s !important;
+        position: relative !important;
     }
     
-    /* Highlight the selected swatch with a thick glowing emerald border */
+    /* Highlight the selected swatch with a neutral white border and white checkmark icon */
     div[data-testid="stRadio"] div[role="radiogroup"] > label:has(input:checked) {
-        border: 2px solid #10b981 !important;
-        box-shadow: 0 0 8px #10b981 !important;
+        border: 2px solid #ffffff !important;
+        box-shadow: 0 0 8px rgba(255, 255, 255, 0.6) !important;
         transform: scale(1.15) !important;
+    }
+    
+    /* White checkmark inside the selected swatch */
+    div[data-testid="stRadio"] div[role="radiogroup"] > label:has(input:checked)::before {
+        content: "✓" !important;
+        color: #ffffff !important;
+        font-size: 13px !important;
+        font-weight: 900 !important;
+        position: absolute !important;
+        left: 50% !important;
+        top: 50% !important;
+        transform: translate(-50%, -50%) !important;
+        z-index: 5 !important;
     }
     
     /* Swatch 1: Default (Dark Blue) */
@@ -439,7 +456,7 @@ with st.sidebar:
             
             col_save, col_cancel = st.columns(2)
             with col_save:
-                if st.button("수정 완료", type="primary", use_container_width=True):
+                if st.button("수정 완료", use_container_width=True):
                     if edit_name.strip() == "" or edit_url.strip() == "":
                         st.error("이름과 URL을 모두 입력해 주세요.")
                     else:
@@ -470,7 +487,7 @@ with st.sidebar:
             key="new_color"
         )
         
-        if st.button("생성", type="primary", use_container_width=True):
+        if st.button("생성", use_container_width=True):
             if new_name.strip() == "" or new_url.strip() == "":
                 st.error("이름과 URL을 모두 입력해 주세요.")
             else:
