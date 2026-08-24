@@ -302,107 +302,74 @@ st.markdown("""
         display: none !important;
     }
     
-    /* Hide the default circular radio checkmark buttons and label texts for the Color radio */
-    div[data-testid="stRadio"] div[role="radiogroup"] > label > div:not([data-testid="stMarkdownContainer"]) {
-        display: none !important;
-    }
-    div[data-testid="stRadio"] div[role="radiogroup"] > label [data-testid="stMarkdownContainer"] {
-        display: none !important;
-    }
-    
-    /* 1. Force 100% width on all stRadio parent containers */
-    .stRadio,
-    div[data-testid="stRadio"],
-    div[data-testid="stRadio"] > div,
-    div[data-testid="stRadio"] div[role="radiogroup"] {
-        width: 100% !important;
-        max-width: 100% !important;
-    }
-    
-    /* 2. Stretch the options container horizontally and lay out as a flex row */
-    div[data-testid="stRadio"] div[role="radiogroup"] {
-        display: flex !important;
-        flex-direction: row !important;
-        justify-content: space-between !important;
-        align-items: center !important;
-        width: 100% !important;
-        gap: 0 !important;
-    }
-    
-    /* 3. Convert radio labels into round colored swatches and calculate spacing dynamically */
-    div[data-testid="stRadio"] div[role="radiogroup"] > label {
-        width: 24px !important;
-        height: 24px !important;
-        min-width: 24px !important;
-        max-width: 24px !important;
+    /* Style the 5 color palette buttons inside st.columns(5) */
+    div[class*="st-key-btn_new_color_"] button,
+    div[class*="st-key-btn_edit_color_"] button {
+        width: 28px !important;
+        height: 28px !important;
+        min-height: 28px !important;
+        max-height: 28px !important;
+        min-width: 28px !important;
+        max-width: 28px !important;
         border-radius: 50% !important;
-        margin: 4px calc((100% - 120px) / 4) 4px 0 !important;
         padding: 0 !important;
-        display: inline-flex !important;
+        margin: 4px auto !important;
+        display: flex !important;
         justify-content: center !important;
         align-items: center !important;
-        cursor: pointer !important;
-        box-sizing: border-box !important;
-        transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s !important;
-        position: relative !important;
-        flex-shrink: 0 !important;
+        font-size: 14px !important;
+        font-weight: 900 !important;
+        color: #ffffff !important;
+        box-shadow: none !important;
+        transition: transform 0.2s, box-shadow 0.2s, border 0.2s !important;
     }
     
-    /* Remove margin-right from the 5th (last) swatch so it touches the right edge */
-    div[data-testid="stRadio"] div[role="radiogroup"] > label:last-child,
-    div[data-testid="stRadio"] div[role="radiogroup"] > label:nth-child(5) {
-        margin-right: 0 !important;
-    }
-    
-    /* Override width for wrapper divs inside the labels to prevent stretching */
-    div[data-testid="stRadio"] div[role="radiogroup"] > label div {
-        width: auto !important;
-        max-width: none !important;
-        height: auto !important;
-    }
-    
-    /* Highlight the selected swatch with a neutral white border and white checkmark icon */
-    div[data-testid="stRadio"] div[role="radiogroup"] > label:has(input:checked) {
-        border: 2px solid #ffffff !important;
-        box-shadow: 0 0 8px rgba(255, 255, 255, 0.6) !important;
+    div[class*="st-key-btn_new_color_"] button:hover,
+    div[class*="st-key-btn_edit_color_"] button:hover {
         transform: scale(1.15) !important;
     }
     
-    /* White checkmark inside the selected swatch */
-    div[data-testid="stRadio"] div[role="radiogroup"] > label:has(input:checked)::before {
-        content: "✓" !important;
-        color: #ffffff !important;
-        font-size: 13px !important;
-        font-weight: 900 !important;
-        position: absolute !important;
-        left: 50% !important;
-        top: 50% !important;
-        transform: translate(-50%, -50%) !important;
-        z-index: 5 !important;
+    /* Highlight the selected button with white border and glow */
+    div[class*="st-key-btn_new_color_"] button[kind="primary"],
+    div[class*="st-key-btn_edit_color_"] button[kind="primary"],
+    div[class*="st-key-btn_new_color_"] button[data-testid="stBaseButton-primary"],
+    div[class*="st-key-btn_edit_color_"] button[data-testid="stBaseButton-primary"] {
+        border: 2px solid #ffffff !important;
+        box-shadow: 0 0 10px rgba(255, 255, 255, 0.8) !important;
+        transform: scale(1.15) !important;
     }
     
-    /* Swatch 1: Default (Dark Blue) */
-    div[data-testid="stRadio"] div[role="radiogroup"] > label:nth-child(1) {
+    /* 1. Default (Dark Blue/Slate) */
+    div[class*="st-key-btn_new_color_default"] button,
+    div[class*="st-key-btn_edit_color_default"] button {
         background-color: #334155 !important;
         border: 1px solid #475569 !important;
     }
-    /* Swatch 2: Orange */
-    div[data-testid="stRadio"] div[role="radiogroup"] > label:nth-child(2) {
+    
+    /* 2. Orange */
+    div[class*="st-key-btn_new_color_orange"] button,
+    div[class*="st-key-btn_edit_color_orange"] button {
         background-color: #ea580c !important;
         border: 1px solid #f97316 !important;
     }
-    /* Swatch 3: Green */
-    div[data-testid="stRadio"] div[role="radiogroup"] > label:nth-child(3) {
+    
+    /* 3. Green */
+    div[class*="st-key-btn_new_color_green"] button,
+    div[class*="st-key-btn_edit_color_green"] button {
         background-color: #16a34a !important;
         border: 1px solid #22c55e !important;
     }
-    /* Swatch 4: Yellow */
-    div[data-testid="stRadio"] div[role="radiogroup"] > label:nth-child(4) {
+    
+    /* 4. Yellow */
+    div[class*="st-key-btn_new_color_yellow"] button,
+    div[class*="st-key-btn_edit_color_yellow"] button {
         background-color: #eab308 !important;
         border: 1px solid #ca8a04 !important;
     }
-    /* Swatch 5: Purple */
-    div[data-testid="stRadio"] div[role="radiogroup"] > label:nth-child(5) {
+    
+    /* 5. Purple */
+    div[class*="st-key-btn_new_color_purple"] button,
+    div[class*="st-key-btn_edit_color_purple"] button {
         background-color: #8b5cf6 !important;
         border: 1px solid #a855f7 !important;
     }
@@ -478,16 +445,30 @@ with st.sidebar:
             edit_name = st.text_input("Name (이름)", value=edit_item['name'], key="edit_name")
             edit_url = st.text_input("URL (주소)", value=edit_item['url'], key="edit_url")
             
-            # Color Selector
-            color_options = ["default", "orange", "green", "yellow", "purple"]
-            current_color = edit_item.get("color", "default")
-            edit_color = st.radio(
-                "색상 (Color)",
-                options=color_options,
-                index=color_options.index(current_color) if current_color in color_options else 0,
-                horizontal=True,
-                key="edit_color"
-            )
+            # Color Selector (5 Equal Columns Matching Full Sidebar Width)
+            st.markdown("<div style='font-size: 14px; margin-bottom: 6px;'>색상 (Color)</div>", unsafe_allow_html=True)
+            if "edit_color" not in st.session_state or st.session_state.get("edit_color_id") != edit_item['id']:
+                st.session_state.edit_color = edit_item.get("color", "default")
+                st.session_state.edit_color_id = edit_item['id']
+                
+            color_cols = st.columns(5)
+            color_list = [
+                ("default", "기본 (Dark)"),
+                ("orange", "오렌지"),
+                ("green", "그린"),
+                ("yellow", "옐로우"),
+                ("purple", "퍼플")
+            ]
+            for idx, (c_name, c_title) in enumerate(color_list):
+                with color_cols[idx]:
+                    is_sel = (st.session_state.edit_color == c_name)
+                    btn_label = "✓" if is_sel else " "
+                    btn_type = "primary" if is_sel else "secondary"
+                    if st.button(btn_label, key=f"btn_edit_color_{c_name}", type=btn_type, use_container_width=True, help=c_title):
+                        st.session_state.edit_color = c_name
+                        st.rerun()
+            
+            edit_color = st.session_state.edit_color
             
             col_save, col_cancel = st.columns(2)
             with col_save:
@@ -514,13 +495,29 @@ with st.sidebar:
         new_name = st.text_input("Name (이름)", placeholder="예: 네이버 증권", key="new_name")
         new_url = st.text_input("URL (주소)", placeholder="예: finance.naver.com", key="new_url")
         
-        # Color Selector
-        new_color = st.radio(
-            "색상 (Color)",
-            options=["default", "orange", "green", "yellow", "purple"],
-            horizontal=True,
-            key="new_color"
-        )
+        # Color Selector (5 Equal Columns Matching Full Sidebar Width)
+        st.markdown("<div style='font-size: 14px; margin-bottom: 6px;'>색상 (Color)</div>", unsafe_allow_html=True)
+        if "new_color" not in st.session_state:
+            st.session_state.new_color = "default"
+            
+        color_cols = st.columns(5)
+        color_list = [
+            ("default", "기본 (Dark)"),
+            ("orange", "오렌지"),
+            ("green", "그린"),
+            ("yellow", "옐로우"),
+            ("purple", "퍼플")
+        ]
+        for idx, (c_name, c_title) in enumerate(color_list):
+            with color_cols[idx]:
+                is_sel = (st.session_state.new_color == c_name)
+                btn_label = "✓" if is_sel else " "
+                btn_type = "primary" if is_sel else "secondary"
+                if st.button(btn_label, key=f"btn_new_color_{c_name}", type=btn_type, use_container_width=True, help=c_title):
+                    st.session_state.new_color = c_name
+                    st.rerun()
+                    
+        new_color = st.session_state.new_color
         
         if st.button("생성", use_container_width=True):
             if new_name.strip() == "" or new_url.strip() == "":
