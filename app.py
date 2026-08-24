@@ -303,7 +303,7 @@ st.markdown("""
     }
     
     /* Hide the default circular radio checkmark buttons and label texts for the Color radio */
-    div[data-testid="stRadio"] div[role="radiogroup"] > label > div:first-child {
+    div[data-testid="stRadio"] div[role="radiogroup"] > label > div:not([data-testid="stMarkdownContainer"]) {
         display: none !important;
     }
     div[data-testid="stRadio"] div[role="radiogroup"] > label [data-testid="stMarkdownContainer"] {
@@ -316,6 +316,7 @@ st.markdown("""
     div[data-testid="stRadio"] > div > div {
         width: 100% !important;
         max-width: 100% !important;
+        display: block !important;
     }
     
     /* Stretch the radio buttons container horizontally to match the input fields' width */
