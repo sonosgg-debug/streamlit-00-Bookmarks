@@ -313,12 +313,13 @@ st.markdown("""
         display: none !important;
     }
     
-    /* Center the radio buttons container horizontally */
+    /* Stretch the radio buttons container horizontally to match the input fields' width */
     div[data-testid="stRadio"] div[role="radiogroup"] {
         display: flex !important;
-        justify-content: center !important;
+        justify-content: space-between !important;
+        align-items: center !important;
         width: 100% !important;
-        gap: 12px !important;
+        gap: 0 !important;
     }
     
     /* Convert radio labels into round colored swatches */
