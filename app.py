@@ -313,6 +313,14 @@ st.markdown("""
         display: none !important;
     }
     
+    /* Center the radio buttons container horizontally */
+    div[data-testid="stRadio"] div[role="radiogroup"] {
+        display: flex !important;
+        justify-content: center !important;
+        width: 100% !important;
+        gap: 12px !important;
+    }
+    
     /* Convert radio labels into round colored swatches */
     div[data-testid="stRadio"] div[role="radiogroup"] > label {
         width: 24px !important;
@@ -320,7 +328,7 @@ st.markdown("""
         min-width: 24px !important;
         max-width: 24px !important;
         border-radius: 50% !important;
-        margin: 4px 10px 4px 0 !important;
+        margin: 4px 0 !important;
         padding: 0 !important;
         display: inline-flex !important;
         justify-content: center !important;
@@ -370,6 +378,11 @@ st.markdown("""
     div[data-testid="stRadio"] div[role="radiogroup"] > label:nth-child(4) {
         background-color: #eab308 !important;
         border: 1px solid #ca8a04 !important;
+    }
+    /* Swatch 5: Purple */
+    div[data-testid="stRadio"] div[role="radiogroup"] > label:nth-child(5) {
+        background-color: #8b5cf6 !important;
+        border: 1px solid #a855f7 !important;
     }
 </style>
 """, unsafe_allow_html=True)
@@ -444,7 +457,7 @@ with st.sidebar:
             edit_url = st.text_input("URL (주소)", value=edit_item['url'], key="edit_url")
             
             # Color Selector
-            color_options = ["default", "orange", "green", "yellow"]
+            color_options = ["default", "orange", "green", "yellow", "purple"]
             current_color = edit_item.get("color", "default")
             edit_color = st.radio(
                 "색상 (Color)",
@@ -482,7 +495,7 @@ with st.sidebar:
         # Color Selector
         new_color = st.radio(
             "색상 (Color)",
-            options=["default", "orange", "green", "yellow"],
+            options=["default", "orange", "green", "yellow", "purple"],
             horizontal=True,
             key="new_color"
         )

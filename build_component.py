@@ -134,6 +134,16 @@ html_template = """<!DOCTYPE html>
             box-shadow: 0 10px 15px -3px rgba(234, 179, 8, 0.2) !important;
         }
 
+        .card-color-purple {
+            background: linear-gradient(135deg, #241635, #140b1f) !important;
+            border: 1px solid #a855f7 !important;
+        }
+        .card-color-purple:hover {
+            transform: translateY(-2px);
+            border-color: #f3e8ff !important; /* Soft purple highlight */
+            box-shadow: 0 10px 15px -3px rgba(168, 85, 247, 0.2) !important;
+        }
+
         .bookmark-title {
             font-size: 0.8rem;
             font-weight: 700;
