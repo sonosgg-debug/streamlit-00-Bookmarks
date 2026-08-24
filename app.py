@@ -303,14 +303,22 @@ st.markdown("""
     }
     
     /* Hide the default circular radio checkmark buttons and label texts for the Color radio */
-    div[data-testid="stRadio"] div[role="radiogroup"] > label > div:not([data-testid="stMarkdownContainer"]) {
+    div[data-testid="stRadio"] div[role="radiogroup"] label > div:not([data-testid="stMarkdownContainer"]) {
         display: none !important;
     }
-    div[data-testid="stRadio"] div[role="radiogroup"] > label input {
+    div[data-testid="stRadio"] div[role="radiogroup"] label input {
         display: none !important;
     }
-    div[data-testid="stRadio"] div[role="radiogroup"] > label [data-testid="stMarkdownContainer"] {
+    div[data-testid="stRadio"] div[role="radiogroup"] label [data-testid="stMarkdownContainer"] {
         display: none !important;
+    }
+    
+    /* Force 100% width on all stRadio parent containers */
+    div[data-testid="stRadio"],
+    div[data-testid="stRadio"] > div,
+    div[data-testid="stRadio"] > div > div {
+        width: 100% !important;
+        max-width: 100% !important;
     }
     
     /* Stretch the radio buttons container horizontally to match the input fields' width */
@@ -319,11 +327,20 @@ st.markdown("""
         justify-content: space-between !important;
         align-items: center !important;
         width: 100% !important;
+        max-width: 100% !important;
         gap: 0 !important;
+        flex-direction: row !important;
     }
     
-    /* Convert radio labels into round colored swatches */
-    div[data-testid="stRadio"] div[role="radiogroup"] > label {
+    /* Reset margins and paddings for direct children of radiogroup (which can be divs or labels) */
+    div[data-testid="stRadio"] div[role="radiogroup"] > * {
+        margin: 0 !important;
+        padding: 0 !important;
+        display: inline-flex !important;
+    }
+    
+    /* Convert radio labels into round colored swatches (using descendant selector) */
+    div[data-testid="stRadio"] div[role="radiogroup"] label {
         width: 24px !important;
         height: 24px !important;
         min-width: 24px !important;
@@ -341,14 +358,14 @@ st.markdown("""
     }
     
     /* Highlight the selected swatch with a neutral white border and white checkmark icon */
-    div[data-testid="stRadio"] div[role="radiogroup"] > label:has(input:checked) {
+    div[data-testid="stRadio"] div[role="radiogroup"] label:has(input:checked) {
         border: 2px solid #ffffff !important;
         box-shadow: 0 0 8px rgba(255, 255, 255, 0.6) !important;
         transform: scale(1.15) !important;
     }
     
     /* White checkmark inside the selected swatch */
-    div[data-testid="stRadio"] div[role="radiogroup"] > label:has(input:checked)::before {
+    div[data-testid="stRadio"] div[role="radiogroup"] label:has(input:checked)::before {
         content: "✓" !important;
         color: #ffffff !important;
         font-size: 13px !important;
@@ -361,27 +378,32 @@ st.markdown("""
     }
     
     /* Swatch 1: Default (Dark Blue) */
-    div[data-testid="stRadio"] div[role="radiogroup"] > label:nth-child(1) {
+    div[data-testid="stRadio"] div[role="radiogroup"] > label:nth-child(1),
+    div[data-testid="stRadio"] div[role="radiogroup"] > *:nth-child(1) label {
         background-color: #334155 !important;
         border: 1px solid #475569 !important;
     }
     /* Swatch 2: Orange */
-    div[data-testid="stRadio"] div[role="radiogroup"] > label:nth-child(2) {
+    div[data-testid="stRadio"] div[role="radiogroup"] > label:nth-child(2),
+    div[data-testid="stRadio"] div[role="radiogroup"] > *:nth-child(2) label {
         background-color: #ea580c !important;
         border: 1px solid #f97316 !important;
     }
     /* Swatch 3: Green */
-    div[data-testid="stRadio"] div[role="radiogroup"] > label:nth-child(3) {
+    div[data-testid="stRadio"] div[role="radiogroup"] > label:nth-child(3),
+    div[data-testid="stRadio"] div[role="radiogroup"] > *:nth-child(3) label {
         background-color: #16a34a !important;
         border: 1px solid #22c55e !important;
     }
     /* Swatch 4: Yellow */
-    div[data-testid="stRadio"] div[role="radiogroup"] > label:nth-child(4) {
+    div[data-testid="stRadio"] div[role="radiogroup"] > label:nth-child(4),
+    div[data-testid="stRadio"] div[role="radiogroup"] > *:nth-child(4) label {
         background-color: #eab308 !important;
         border: 1px solid #ca8a04 !important;
     }
     /* Swatch 5: Purple */
-    div[data-testid="stRadio"] div[role="radiogroup"] > label:nth-child(5) {
+    div[data-testid="stRadio"] div[role="radiogroup"] > label:nth-child(5),
+    div[data-testid="stRadio"] div[role="radiogroup"] > *:nth-child(5) label {
         background-color: #8b5cf6 !important;
         border: 1px solid #a855f7 !important;
     }
