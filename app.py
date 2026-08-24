@@ -301,6 +301,59 @@ st.markdown("""
     [data-testid="stFileUploaderDropzone"] button ~ * {
         display: none !important;
     }
+    
+    /* Hide the radio button circle inputs and label texts for the Color radio key */
+    div[data-testid="stRadio"] div[role="radiogroup"] > label > div:first-child {
+        display: none !important;
+    }
+    div[data-testid="stRadio"] div[role="radiogroup"] > label [data-testid="stMarkdownContainer"] {
+        display: none !important;
+    }
+    
+    /* Convert radio labels into round colored swatches */
+    div[data-testid="stRadio"] div[role="radiogroup"] > label {
+        width: 24px !important;
+        height: 24px !important;
+        min-width: 24px !important;
+        max-width: 24px !important;
+        border-radius: 50% !important;
+        margin: 4px 10px 4px 0 !important;
+        padding: 0 !important;
+        display: inline-flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+        cursor: pointer !important;
+        box-sizing: border-box !important;
+        transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s !important;
+    }
+    
+    /* Highlight the selected swatch with a thick glowing emerald border */
+    div[data-testid="stRadio"] div[role="radiogroup"] > label:has(input:checked) {
+        border: 2px solid #10b981 !important;
+        box-shadow: 0 0 8px #10b981 !important;
+        transform: scale(1.15) !important;
+    }
+    
+    /* Swatch 1: Default (Dark Blue) */
+    div[data-testid="stRadio"] div[role="radiogroup"] > label:nth-child(1) {
+        background-color: #334155 !important;
+        border: 1px solid #475569 !important;
+    }
+    /* Swatch 2: Orange */
+    div[data-testid="stRadio"] div[role="radiogroup"] > label:nth-child(2) {
+        background-color: #ea580c !important;
+        border: 1px solid #f97316 !important;
+    }
+    /* Swatch 3: Green */
+    div[data-testid="stRadio"] div[role="radiogroup"] > label:nth-child(3) {
+        background-color: #16a34a !important;
+        border: 1px solid #22c55e !important;
+    }
+    /* Swatch 4: Yellow */
+    div[data-testid="stRadio"] div[role="radiogroup"] > label:nth-child(4) {
+        background-color: #eab308 !important;
+        border: 1px solid #ca8a04 !important;
+    }
 </style>
 """, unsafe_allow_html=True)
 
@@ -373,6 +426,17 @@ with st.sidebar:
             edit_name = st.text_input("Name (이름)", value=edit_item['name'], key="edit_name")
             edit_url = st.text_input("URL (주소)", value=edit_item['url'], key="edit_url")
             
+            # Color Selector
+            color_options = ["default", "orange", "green", "yellow"]
+            current_color = edit_item.get("color", "default")
+            edit_color = st.radio(
+                "색상 (Color)",
+                options=color_options,
+                index=color_options.index(current_color) if current_color in color_options else 0,
+                horizontal=True,
+                key="edit_color"
+            )
+            
             col_save, col_cancel = st.columns(2)
             with col_save:
                 if st.button("수정 완료", type="primary", use_container_width=True):
@@ -381,6 +445,7 @@ with st.sidebar:
                     else:
                         edit_item['name'] = edit_name.strip()
                         edit_item['url'] = clean_url(edit_url)
+                        edit_item['color'] = edit_color
                         save_bookmarks()
                         st.session_state.edit_id = None
                         st.success("수정되었습니다!")
@@ -397,6 +462,14 @@ with st.sidebar:
         new_name = st.text_input("Name (이름)", placeholder="예: 네이버 증권", key="new_name")
         new_url = st.text_input("URL (주소)", placeholder="예: finance.naver.com", key="new_url")
         
+        # Color Selector
+        new_color = st.radio(
+            "색상 (Color)",
+            options=["default", "orange", "green", "yellow"],
+            horizontal=True,
+            key="new_color"
+        )
+        
         if st.button("생성", type="primary", use_container_width=True):
             if new_name.strip() == "" or new_url.strip() == "":
                 st.error("이름과 URL을 모두 입력해 주세요.")
@@ -404,7 +477,8 @@ with st.sidebar:
                 new_item = {
                     "id": str(uuid.uuid4()),
                     "name": new_name.strip(),
-                    "url": clean_url(new_url)
+                    "url": clean_url(new_url),
+                    "color": new_color
                 }
                 st.session_state.bookmarks.append(new_item)
                 save_bookmarks()
