@@ -66,9 +66,32 @@
     "color": "yellow"
   },
   {
+    "id": "6d9f86c5-f0db-4649-8230-e51c417aa034",
+    "name": "KRX Data Marketplace",
+    "url": "https://data.krx.co.kr/contents/MDC/MAIN/main/index.cmd",
+    "color": "default"
+  },
+  {
+    "id": "bc2794f0-2fe9-4d65-8d27-44f8bcac2c72",
+    "name": "금투협 종합통계",
+    "url": "https://freesis.kofia.or.kr/",
+    "color": "default"
+  },
+  {
+    "id": "cdcf0433-9aa2-4337-b9ad-a82f3af8bc03",
+    "name": "전자공시시스템(DART)",
+    "url": "https://dart.fss.or.kr/",
+    "color": "default"
+  },
+  {
     "id": "7e221b30-db79-4b70-abf4-1479e3f70bf9",
     "name": "Company Guide",
     "url": "https://wcomp.fnguide.com"
+  },
+  {
+    "id": "d8fd1dfa-32e0-4d13-9b52-a366436a626b",
+    "name": "FedWatch",
+    "url": "https://www.cmegroup.com/markets/interest-rates/cme-fedwatch-tool.html?redirect=/trading/interest-rates/countdown-to-fomc.html"
   },
   {
     "id": "4",
@@ -95,10 +118,5 @@
     "id": "3",
     "name": "Investing.com",
     "url": "https://kr.investing.com"
-  },
-  {
-    "id": "d8fd1dfa-32e0-4d13-9b52-a366436a626b",
-    "name": "FedWatch",
-    "url": "https://www.cmegroup.com/markets/interest-rates/cme-fedwatch-tool.html?redirect=/trading/interest-rates/countdown-to-fomc.html"
   }
 ]
