@@ -28,6 +28,11 @@ if %ERRORLEVEL% neq 0 (
 )
 
 echo [3/3] GitHub 원격 저장소로 업로드(Push) 중...
+git pull --rebase origin main
+if %ERRORLEVEL% neq 0 (
+    echo [에러] 원격 저장소의 최신 변경 사항을 가져오는 데 실패했습니다 (Pull/Rebase 실패).
+    goto end
+)
 git push origin main
 if %ERRORLEVEL% neq 0 (
     echo [에러] GitHub 업로드에 실패했습니다. 인터넷 연결이나 권한을 확인해 주세요.
