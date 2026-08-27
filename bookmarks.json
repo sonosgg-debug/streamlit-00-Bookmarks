@@ -83,7 +83,8 @@
   {
     "id": "1",
     "name": "Naver Pay 증권",
-    "url": "https://finance.naver.com"
+    "url": "https://stock.naver.com/",
+    "color": "default"
   },
   {
     "id": "2",
@@ -98,7 +99,6 @@
   {
     "id": "d8fd1dfa-32e0-4d13-9b52-a366436a626b",
     "name": "FedWatch",
-    "url": "https://www.cmegroup.com/markets/interest-rates/cme-fedwatch-tool.html?redirect=/trading/interest-rates/countdown-to-fomc.html",
-    "color": "purple"
+    "url": "https://www.cmegroup.com/markets/interest-rates/cme-fedwatch-tool.html?redirect=/trading/interest-rates/countdown-to-fomc.html"
   }
 ]
