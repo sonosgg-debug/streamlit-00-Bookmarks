@@ -66,6 +66,12 @@
     "color": "yellow"
   },
   {
+    "id": "901e3696-60f3-45c5-bb88-b6dce2c9c8db",
+    "name": "GenPort 포트AI",
+    "url": "https://portai.newsystock.com/",
+    "color": "green"
+  },
+  {
     "id": "6d9f86c5-f0db-4649-8230-e51c417aa034",
     "name": "KRX Data Marketplace",
     "url": "https://data.krx.co.kr/contents/MDC/MAIN/main/index.cmd",
