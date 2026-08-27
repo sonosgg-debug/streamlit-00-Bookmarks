@@ -118,5 +118,23 @@
     "id": "3",
     "name": "Investing.com",
     "url": "https://kr.investing.com"
+  },
+  {
+    "id": "b00c6f7f-5857-43b6-9a1c-3715c971112f",
+    "name": "FINVIZ Map",
+    "url": "https://finviz.com/map",
+    "color": "default"
+  },
+  {
+    "id": "8ff25780-93aa-4636-b4c8-0dd13c2753b3",
+    "name": "Portfolio Visualizer",
+    "url": "https://www.portfoliovisualizer.com/",
+    "color": "default"
+  },
+  {
+    "id": "2a7acf0c-1fac-4f17-9e0d-5e048119a6b1",
+    "name": "Seeking Alpha",
+    "url": "https://seekingalpha.com/",
+    "color": "default"
   }
 ]
