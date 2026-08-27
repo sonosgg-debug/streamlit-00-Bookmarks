@@ -89,16 +89,6 @@
     "url": "https://wcomp.fnguide.com"
   },
   {
-    "id": "d8fd1dfa-32e0-4d13-9b52-a366436a626b",
-    "name": "FedWatch",
-    "url": "https://www.cmegroup.com/markets/interest-rates/cme-fedwatch-tool.html?redirect=/trading/interest-rates/countdown-to-fomc.html"
-  },
-  {
-    "id": "4",
-    "name": "TradingView",
-    "url": "https://kr.tradingview.com"
-  },
-  {
     "id": "55500653-ec6c-466c-82bf-cb011d420065",
     "name": "IndexerGo",
     "url": "https://www.indexergo.com"
@@ -108,6 +98,16 @@
     "name": "Naver Pay 증권",
     "url": "https://stock.naver.com/",
     "color": "default"
+  },
+  {
+    "id": "d8fd1dfa-32e0-4d13-9b52-a366436a626b",
+    "name": "FedWatch",
+    "url": "https://www.cmegroup.com/markets/interest-rates/cme-fedwatch-tool.html?redirect=/trading/interest-rates/countdown-to-fomc.html"
+  },
+  {
+    "id": "4",
+    "name": "TradingView",
+    "url": "https://kr.tradingview.com"
   },
   {
     "id": "2",
