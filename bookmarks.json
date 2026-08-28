@@ -36,6 +36,12 @@
     "color": "green"
   },
   {
+    "id": "799efe5c-5048-4361-928c-a6c297d9283a",
+    "name": "투자자별 매매동향",
+    "url": "https://app-06-netbuyerchart.streamlit.app/",
+    "color": "green"
+  },
+  {
     "id": "5e92ab5c-01e4-4d90-bae7-7003bd9f50a8",
     "name": "수익률 비교",
     "url": "https://app-05-performancechart.streamlit.app",
