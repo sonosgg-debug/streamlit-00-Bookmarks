@@ -36,6 +36,12 @@
     "color": "green"
   },
   {
+    "id": "5e92ab5c-01e4-4d90-bae7-7003bd9f50a8",
+    "name": "수익률 비교",
+    "url": "https://app-05-performancechart.streamlit.app",
+    "color": "purple"
+  },
+  {
     "id": "799efe5c-5048-4361-928c-a6c297d9283a",
     "name": "투자자별 매매동향",
     "url": "https://app-06-netbuyerchart.streamlit.app/",
@@ -45,12 +51,6 @@
     "id": "6917a8ae-01be-447e-95fd-300593fd79ae",
     "name": "종목별 공매도 추이",
     "url": "https://app-07-shortselling.streamlit.app/",
-    "color": "purple"
-  },
-  {
-    "id": "5e92ab5c-01e4-4d90-bae7-7003bd9f50a8",
-    "name": "수익률 비교",
-    "url": "https://app-05-performancechart.streamlit.app",
     "color": "purple"
   },
   {
