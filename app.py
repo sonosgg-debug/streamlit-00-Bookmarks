@@ -571,7 +571,13 @@ with st.sidebar:
             st.error(f"파일을 읽는 도중 오류가 발생했습니다: {e}")
 
 # 5. Main Dashboard Area
-st.title("묘하고 묘하도다, 뭇 신비의 문이어라. (玄之又玄 衆妙之門)")
+st.markdown(
+    "<h2 style='font-size: 1.8rem; font-weight: 700; line-height: 1.35; margin: 0 0 10px 0; color: #f8fafc;'>"
+    "묘하고 묘하도다, 뭇 신비의 문이어라.<br>"
+    "(玄之又玄 衆妙之門)"
+    "</h2>",
+    unsafe_allow_html=True
+)
 st.markdown(
     "<div style='font-size: 0.9rem; color: #94a3b8; margin-bottom: 15px;'>"
     "인공지능(AI)의 도움으로 구축한 투자용 스크리닝 앱과 웹사이트를 모아놓은 개인용 대시보드입니다."
