@@ -572,7 +572,7 @@ with st.sidebar:
 
 # 5. Main Dashboard Area
 st.markdown(
-    "<h1 style='font-size: 1.8rem; font-weight: 800; line-height: 1.35; margin: 0 0 10px 0; color: #8AB4F8 !important;'>"
+    "<h1 style='text-align: center; font-size: 1.8rem; font-weight: 800; line-height: 1.35; margin: 0 0 10px 0; color: #8AB4F8 !important;'>"
     "묘하고 묘하도다, 뭇 신비의 문이어라.<br>"
     "(玄之又玄 衆妙之門)"
     "</h1>",
