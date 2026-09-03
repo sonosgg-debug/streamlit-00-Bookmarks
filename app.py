@@ -579,7 +579,7 @@ st.markdown(
     unsafe_allow_html=True
 )
 st.markdown(
-    "<div style='font-size: 0.9rem; color: #94a3b8; margin-bottom: 15px;'>"
+    "<div style='text-align: center; font-size: 0.9rem; color: #94a3b8; margin-bottom: 15px;'>"
     "인공지능(AI)의 도움으로 구축한 투자용 스크리닝 앱과 웹사이트를 모아놓은 개인용 대시보드입니다."
     "</div>",
     unsafe_allow_html=True
