@@ -42,8 +42,14 @@
     "color": "purple"
   },
   {
+    "id": "fae786b7-662a-4971-b0a6-79ab66894d7f",
+    "name": "종목별 실적 및 컨센서스",
+    "url": "https://app-08-financialchart.streamlit.app/",
+    "color": "purple"
+  },
+  {
     "id": "799efe5c-5048-4361-928c-a6c297d9283a",
-    "name": "투자자별 매매동향",
+    "name": "종목별 투자자 매매동향",
     "url": "https://app-06-netbuyerchart.streamlit.app/",
     "color": "purple"
   },
