@@ -37,13 +37,13 @@
   },
   {
     "id": "5e92ab5c-01e4-4d90-bae7-7003bd9f50a8",
-    "name": "수익률 비교",
+    "name": "종목&지수 수익률 비교",
     "url": "https://app-05-performancechart.streamlit.app",
     "color": "purple"
   },
   {
     "id": "fae786b7-662a-4971-b0a6-79ab66894d7f",
-    "name": "종목별 실적 및 컨센서스",
+    "name": "종목별 실적 & 컨센서스",
     "url": "https://app-08-financialchart.streamlit.app/",
     "color": "purple"
   },
