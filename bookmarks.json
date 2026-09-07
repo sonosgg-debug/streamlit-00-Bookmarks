@@ -60,6 +60,12 @@
     "color": "purple"
   },
   {
+    "id": "af5265c3-06c0-45f3-a905-322ce136bdf2",
+    "name": "SKHY(ADR) 프리미엄 추이",
+    "url": "https://app-09-skhyadrp.streamlit.app/",
+    "color": "orange"
+  },
+  {
     "id": "22962b59-0327-489f-8fd9-c9c949cede66",
     "name": "My Github",
     "url": "https://github.com",
