@@ -23,6 +23,12 @@ st.markdown("""
         color: #f8fafc;
     }
     
+    /* Main Content Area - reduce top padding to pull title up */
+    .main .block-container,
+    [data-testid="stMainBlockContainer"] {
+        padding-top: 3.5rem !important;
+    }
+    
     /* Sidebar styling */
     section[data-testid="stSidebar"] {
         background-color: #1e293b !important;
