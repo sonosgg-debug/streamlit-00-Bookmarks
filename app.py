@@ -5,9 +5,11 @@ import os
 import uuid
 
 # 1. Page Configuration
+FAVICON_PATH = os.path.join(os.path.dirname(__file__), "favicon.png")
+
 st.set_page_config(
-    page_title="투자 북마크 대시보드",
-    page_icon="📈",
+    page_title="Gateway to Investing - 玄之又玄 衆妙之門",
+    page_icon=FAVICON_PATH if os.path.exists(FAVICON_PATH) else None,
     layout="wide",
     initial_sidebar_state="expanded"
 )
