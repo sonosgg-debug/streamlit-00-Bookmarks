@@ -60,6 +60,12 @@
     "color": "purple"
   },
   {
+    "id": "0a5d988f-0f38-4cb3-ad7a-c3517b7730a3",
+    "name": "Magic S-RIM 평가 모델",
+    "url": "https://app-10-magicsrim.streamlit.app/",
+    "color": "orange"
+  },
+  {
     "id": "af5265c3-06c0-45f3-a905-322ce136bdf2",
     "name": "SKHY(ADR) 프리미엄 추이",
     "url": "https://app-09-skhyadrp.streamlit.app/",
