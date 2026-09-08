@@ -581,14 +581,14 @@ with st.sidebar:
 # 5. Main Dashboard Area
 st.markdown(
     "<h1 style='text-align: center; font-size: 1.8rem; font-weight: 800; line-height: 1.35; margin: 0 0 10px 0; color: #8AB4F8 !important;'>"
-    "묘하고 묘하도다, 뭇 신비의 문이어라.<br>"
-    "(玄之又玄 衆妙之門)"
+    "Stock investing is an art, not a science. (<i>Peter Lynch</i>)<br>"
+    "But truly it is both."
     "</h1>",
     unsafe_allow_html=True
 )
 st.markdown(
     "<div style='text-align: center; font-size: 0.9rem; color: #94a3b8; margin-bottom: 15px;'>"
-    "인공지능(AI)의 도움으로 구축한 투자용 스크리닝 앱과 웹사이트를 모아놓은 개인용 대시보드입니다."
+    "묘하고 묘하도다, 뭇 신비의 문이어라. (玄之又玄 衆妙之門)"
     "</div>",
     unsafe_allow_html=True
 )
