@@ -593,6 +593,8 @@ st.markdown(
     unsafe_allow_html=True
 )
 
+st.markdown("<hr style='border: 0; height: 1px; background-color: #334155; margin-bottom: 22px;'>", unsafe_allow_html=True)
+
 # A. Search / Filter bar
 search_query = st.text_input("🔍 북마크 검색", placeholder="이름으로 검색...")
 
