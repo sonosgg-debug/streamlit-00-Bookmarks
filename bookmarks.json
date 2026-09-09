@@ -42,6 +42,12 @@
     "color": "purple"
   },
   {
+    "id": "db8e8161-3093-4632-8bea-82053d07a635",
+    "name": "종목 PER 변화 추이 비교",
+    "url": "https://app-11-percomparison.streamlit.app/",
+    "color": "purple"
+  },
+  {
     "id": "fae786b7-662a-4971-b0a6-79ab66894d7f",
     "name": "종목별 실적 & 컨센서스",
     "url": "https://app-08-financialchart.streamlit.app/",
