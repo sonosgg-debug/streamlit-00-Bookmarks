@@ -42,6 +42,12 @@
     "color": "green"
   },
   {
+    "id": "3f999727-c324-49c4-9a9b-ac548684c12f",
+    "name": "배당주 TOP 100",
+    "url": "https://app-13-dividendstock.streamlit.app/",
+    "color": "green"
+  },
+  {
     "id": "5e92ab5c-01e4-4d90-bae7-7003bd9f50a8",
     "name": "종목&지수 수익률 비교",
     "url": "https://app-05-performancechart.streamlit.app",
