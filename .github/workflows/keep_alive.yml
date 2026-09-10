@@ -1,29 +1,31 @@
-name: Keep Streamlit Alive
+name: Wake Up Streamlit (Playwright)
 
 on:
   schedule:
-    # 3일마다 자정(UTC 00:00, 한국 시간 오전 09:00)에 자동 실행
-    # 필요에 따라 주기 변경 가능 (예: 매주 월/목 '0 0 * * 1,4')
-    - cron: '0 0 */3 * *'
-  # GitHub Actions 탭에서 수동으로 즉시 실행할 수 있도록 설정
-  workflow_dispatch:
+    # 12시간마다 실행 (UTC 00:00, 12:00 -> 한국 시간 기준 오전 9시, 오후 9시)
+    - cron: '0 0,12 * * *'
+  workflow_dispatch: # Actions 탭에서 수동 실행 지원
 
 jobs:
-  keep-alive:
+  wake-up:
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
 
     steps:
-      - name: Checkout repository
+      - name: 저장소 체크아웃
         uses: actions/checkout@v4
 
-      - name: Configure Git
-        run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+      - name: Python 환경 설정
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
 
-      - name: Commit empty change and push
+      - name: Playwright 및 Chromium 브라우저 설치
         run: |
-          git commit --allow-empty -m "chore: keep-alive ping for Streamlit [skip ci]"
-          git push origin main
+          python -m pip install --upgrade pip
+          pip install playwright
+          playwright install --with-deps chromium
+
+      - name: 앱 접속 및 깨우기 스크립트 실행
+        run: |
+          python scripts/wake_up.py
