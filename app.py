@@ -454,7 +454,7 @@ with st.sidebar:
             edit_url = st.text_input("URL (주소)", value=edit_item['url'], key="edit_url")
             
             # Color Selector (5 Equal Columns Matching Full Sidebar Width)
-            st.markdown("<div style='font-size: 14px; margin-bottom: 6px;'>색상 (Color)</div>", unsafe_allow_html=True)
+            st.markdown("<div style='font-size: 14px; margin-bottom: 6px;'>Color (색상)</div>", unsafe_allow_html=True)
             if "edit_color" not in st.session_state or st.session_state.get("edit_color_id") != edit_item['id']:
                 st.session_state.edit_color = edit_item.get("color", "default")
                 st.session_state.edit_color_id = edit_item['id']
@@ -504,7 +504,7 @@ with st.sidebar:
         new_url = st.text_input("URL (주소)", placeholder="예: finance.naver.com", key="new_url")
         
         # Color Selector (5 Equal Columns Matching Full Sidebar Width)
-        st.markdown("<div style='font-size: 14px; margin-bottom: 6px;'>색상 (Color)</div>", unsafe_allow_html=True)
+        st.markdown("<div style='font-size: 14px; margin-bottom: 6px;'>Color (색상)</div>", unsafe_allow_html=True)
         if "new_color" not in st.session_state:
             st.session_state.new_color = "default"
             
