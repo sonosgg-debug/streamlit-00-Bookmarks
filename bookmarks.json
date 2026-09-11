@@ -166,6 +166,18 @@
     "color": "default"
   },
   {
+    "id": "d6556c50-4de4-4c0a-bfe9-1f93e3cd039a",
+    "name": "KOSPI ADR",
+    "url": "http://adrinfo.kr/chart_indx",
+    "color": "default"
+  },
+  {
+    "id": "f402a17b-286d-4681-a270-c49ae61d509c",
+    "name": "KOSPI Fear&Greed",
+    "url": "https://feargreed.co.kr/",
+    "color": "default"
+  },
+  {
     "id": "d8fd1dfa-32e0-4d13-9b52-a366436a626b",
     "name": "FedWatch",
     "url": "https://www.cmegroup.com/markets/interest-rates/cme-fedwatch-tool.html?redirect=/trading/interest-rates/countdown-to-fomc.html"
