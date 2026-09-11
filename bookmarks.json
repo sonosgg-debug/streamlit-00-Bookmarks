@@ -6,6 +6,12 @@
     "color": "orange"
   },
   {
+    "id": "de51ad68-98bc-4de4-9576-4e9dfa2dfc62",
+    "name": "Monthly Review",
+    "url": "https://app-15-monthlyreview.streamlit.app/",
+    "color": "orange"
+  },
+  {
     "id": "8595ed36-0ff9-4090-968a-f9c86a8f3326",
     "name": "Financial Report",
     "url": "https://financial-report-sigma.vercel.app",
