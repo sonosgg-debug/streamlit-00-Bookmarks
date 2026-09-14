@@ -18,6 +18,12 @@
     "color": "orange"
   },
   {
+    "id": "3dfc85ca-7807-41ad-a828-80011e5417f3",
+    "name": "주식 vs 부동산",
+    "url": "https://app-16-realestate.streamlit.app/",
+    "color": "orange"
+  },
+  {
     "id": "26c469bf-65cf-45e6-8e08-8105a8fc000f",
     "name": "William O'Neal",
     "url": "https://app-02-cuphandle.streamlit.app",
