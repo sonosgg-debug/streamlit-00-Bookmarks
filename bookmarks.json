@@ -6,6 +6,12 @@
     "color": "orange"
   },
   {
+    "id": "c6fb7d59-5ddc-44cd-a339-a66a0ffbc723",
+    "name": "Market Overview 2",
+    "url": "https://app-19-marketoverview.streamlit.app/",
+    "color": "orange"
+  },
+  {
     "id": "38b414f6-4c1a-4b17-bed9-6524f115eb92",
     "name": "Daily Briefing",
     "url": "https://app-18-marketbriefing.streamlit.app/",
