@@ -75,37 +75,37 @@
     "id": "fae786b7-662a-4971-b0a6-79ab66894d7f",
     "name": "종목별 실적 & 컨센서스",
     "url": "https://app-08-financialchart.streamlit.app/",
-    "color": "purple"
+    "color": "yellow"
   },
   {
     "id": "581fabda-f213-4042-a23a-f6a279b7d850",
     "name": "Technical Analysis Pro",
     "url": "https://app-17-chartreading.streamlit.app/",
-    "color": "purple"
+    "color": "yellow"
   },
   {
     "id": "799efe5c-5048-4361-928c-a6c297d9283a",
     "name": "종목별 투자자 매매동향",
     "url": "https://app-06-netbuyerchart.streamlit.app/",
-    "color": "purple"
+    "color": "yellow"
   },
   {
     "id": "6917a8ae-01be-447e-95fd-300593fd79ae",
     "name": "종목별 공매도 추이",
     "url": "https://app-07-shortselling.streamlit.app/",
-    "color": "purple"
+    "color": "yellow"
   },
   {
     "id": "db8e8161-3093-4632-8bea-82053d07a635",
     "name": "종목 PER 변화 추이 비교",
     "url": "https://app-11-percomparison.streamlit.app/",
-    "color": "purple"
+    "color": "yellow"
   },
   {
     "id": "5e92ab5c-01e4-4d90-bae7-7003bd9f50a8",
     "name": "종목&지수 수익률 비교",
     "url": "https://app-05-performancechart.streamlit.app",
-    "color": "purple"
+    "color": "yellow"
   },
   {
     "id": "0a5d988f-0f38-4cb3-ad7a-c3517b7730a3",
@@ -123,25 +123,25 @@
     "id": "22962b59-0327-489f-8fd9-c9c949cede66",
     "name": "My Github",
     "url": "https://github.com",
-    "color": "yellow"
+    "color": "purple"
   },
   {
     "id": "1381be4c-238f-43d9-9557-1324d8042031",
     "name": "My Streamlit",
     "url": "https://share.streamlit.io/?utm_source=streamlit&utm_medium=referral&utm_campaign=main&utm_content=-ss-streamlit-io-cloudpagehero",
-    "color": "yellow"
+    "color": "purple"
   },
   {
     "id": "6f3707da-ea89-4743-8cfb-dd8c379013c8",
     "name": "My Vercel",
     "url": "https://vercel.com/sonosgg-debugs-projects",
-    "color": "yellow"
+    "color": "purple"
   },
   {
     "id": "4528bc96-cb84-480f-9d59-4744a77d76f1",
     "name": "My Supabase",
     "url": "https://supabase.com/dashboard/org/qqpiydxsanpjijsofgyf",
-    "color": "yellow"
+    "color": "purple"
   },
   {
     "id": "901e3696-60f3-45c5-bb88-b6dce2c9c8db",
