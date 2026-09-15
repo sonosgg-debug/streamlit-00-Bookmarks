@@ -1,13 +1,7 @@
 [
   {
-    "id": "19ec972f-168f-41ae-a6d8-b7074a4caac9",
-    "name": "Market Overview",
-    "url": "https://market-signal-alpha.vercel.app",
-    "color": "orange"
-  },
-  {
     "id": "c6fb7d59-5ddc-44cd-a339-a66a0ffbc723",
-    "name": "Market Overview 2",
+    "name": "Market Overview",
     "url": "https://app-19-marketoverview.streamlit.app/",
     "color": "orange"
   },
@@ -238,5 +232,11 @@
     "name": "Seeking Alpha",
     "url": "https://seekingalpha.com/",
     "color": "default"
+  },
+  {
+    "id": "19ec972f-168f-41ae-a6d8-b7074a4caac9",
+    "name": "Market Overview (old)",
+    "url": "https://market-signal-alpha.vercel.app",
+    "color": "orange"
   }
 ]
