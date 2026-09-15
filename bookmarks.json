@@ -7,8 +7,8 @@
   },
   {
     "id": "38b414f6-4c1a-4b17-bed9-6524f115eb92",
-    "name": "Daily Market Report",
-    "url": "https://app-18-marketreport.streamlit.app/",
+    "name": "Daily Market Briefing",
+    "url": "https://app-18-marketbriefing.streamlit.app/",
     "color": "orange"
   },
   {
