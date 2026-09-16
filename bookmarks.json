@@ -12,6 +12,12 @@
     "color": "orange"
   },
   {
+    "id": "af5265c3-06c0-45f3-a905-322ce136bdf2",
+    "name": "SKHY(ADR) 프리미엄 추이",
+    "url": "https://app-09-skhyadrp.streamlit.app/",
+    "color": "orange"
+  },
+  {
     "id": "de51ad68-98bc-4de4-9576-4e9dfa2dfc62",
     "name": "Monthly Review",
     "url": "https://app-15-monthlyreview.streamlit.app/",
@@ -54,6 +60,12 @@
     "color": "green"
   },
   {
+    "id": "36b47afb-efa2-47a7-9d98-0a3ca1266360",
+    "name": "다중 지표 앙상블 모델",
+    "url": "https://app-20-multiindicatorensemble.streamlit.app/",
+    "color": "green"
+  },
+  {
     "id": "c33215e0-0a6b-4e2c-a61e-5aecbb5be5c0",
     "name": "우선주 vs 보통주",
     "url": "https://app-12-preferredstock.streamlit.app/",
@@ -75,6 +87,12 @@
     "id": "fae786b7-662a-4971-b0a6-79ab66894d7f",
     "name": "종목별 실적 & 컨센서스",
     "url": "https://app-08-financialchart.streamlit.app/",
+    "color": "yellow"
+  },
+  {
+    "id": "0a5d988f-0f38-4cb3-ad7a-c3517b7730a3",
+    "name": "Magic S-RIM 평가 모델",
+    "url": "https://app-10-magicsrim.streamlit.app/",
     "color": "yellow"
   },
   {
@@ -106,18 +124,6 @@
     "name": "종목&지수 수익률 비교",
     "url": "https://app-05-performancechart.streamlit.app",
     "color": "yellow"
-  },
-  {
-    "id": "0a5d988f-0f38-4cb3-ad7a-c3517b7730a3",
-    "name": "Magic S-RIM 평가 모델",
-    "url": "https://app-10-magicsrim.streamlit.app/",
-    "color": "orange"
-  },
-  {
-    "id": "af5265c3-06c0-45f3-a905-322ce136bdf2",
-    "name": "SKHY(ADR) 프리미엄 추이",
-    "url": "https://app-09-skhyadrp.streamlit.app/",
-    "color": "orange"
   },
   {
     "id": "22962b59-0327-489f-8fd9-c9c949cede66",
