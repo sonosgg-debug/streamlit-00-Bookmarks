@@ -85,19 +85,19 @@
   },
   {
     "id": "fae786b7-662a-4971-b0a6-79ab66894d7f",
-    "name": "종목별 실적 & 컨센서스",
+    "name": "☆ Fundamental Analysis",
     "url": "https://app-08-financialchart.streamlit.app/",
     "color": "yellow"
   },
   {
     "id": "0a5d988f-0f38-4cb3-ad7a-c3517b7730a3",
-    "name": "Magic S-RIM 평가 모델",
+    "name": "☆ Magic S-RIM 평가 모델",
     "url": "https://app-10-magicsrim.streamlit.app/",
     "color": "yellow"
   },
   {
     "id": "581fabda-f213-4042-a23a-f6a279b7d850",
-    "name": "Technical Analysis Pro",
+    "name": "☆ Technical Analysis Pro",
     "url": "https://app-17-chartreading.streamlit.app/",
     "color": "yellow"
   },
