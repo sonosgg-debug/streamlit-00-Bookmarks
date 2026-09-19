@@ -659,7 +659,7 @@ with st.sidebar:
 
 # 5. Main Dashboard Area
 st.markdown(
-    "<h1 style='text-align: center; font-size: 1.9rem; font-weight: 800; line-height: 1.35; margin: 0 0 10px 0; color: #8AB4F8 !important;'>"
+    "<h1 style='text-align: center; font-size: 2.0rem; font-weight: 800; line-height: 1.35; margin: 0 0 10px 0; color: #8AB4F8 !important;'>"
     "Stock investing is an art, not a science. <span style='font-size: 1.0rem;'>(<i>Peter Lynch</i>)</span><br>"
     "But truly it is both."
     "</h1>",
