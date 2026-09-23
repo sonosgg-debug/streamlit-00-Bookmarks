@@ -209,15 +209,15 @@ st.markdown("""
         border: 1px solid #475569 !important;
         border-radius: 6px !important;
         padding: 0 !important;
-        height: 42px !important;
-        min-height: 42px !important;
-        max-height: 42px !important;
+        height: 38px !important;
+        min-height: 38px !important;
+        max-height: 38px !important;
         display: flex !important;
         align-items: center !important;
         justify-content: center !important;
         text-align: center !important;
         cursor: pointer !important;
-        transition: all 0.2s !important;
+        transition: all 0.2s ease-in-out !important;
         box-sizing: border-box !important;
         position: relative !important;
         overflow: hidden !important;
@@ -225,7 +225,7 @@ st.markdown("""
     
     [data-testid="stFileUploaderDropzone"]:hover {
         background-color: #475569 !important;
-        border-color: #64748b !important;
+        border-color: #38bdf8 !important;
     }
     
     /* Center vertical arrangement of elements inside dropzone */
@@ -245,15 +245,15 @@ st.markdown("""
         display: none !important;
     }
     
-    /* Style the download button to be 42px high and have correct styles */
-    .stDownloadButton button,
-    [data-testid="stDownloadButton"] button {
+    /* Style the download button to be 38px high and have correct styles */
+    div[data-testid="stDownloadButton"] > button,
+    .stDownloadButton > button {
         width: 100% !important;
-        height: 42px !important;
-        min-height: 42px !important;
-        max-height: 42px !important;
+        height: 38px !important;
+        min-height: 38px !important;
+        max-height: 38px !important;
         padding: 0px 16px !important;
-        line-height: 40px !important;
+        line-height: 36px !important;
         display: inline-flex !important;
         justify-content: center !important;
         align-items: center !important;
@@ -264,17 +264,36 @@ st.markdown("""
         border-radius: 6px !important;
         margin: 0 !important;
         cursor: pointer !important;
-        transition: all 0.2s !important;
+        transition: all 0.2s ease-in-out !important;
         box-sizing: border-box !important;
-        font-size: 0.85rem !important;
-        font-weight: normal !important;
+        font-size: 0.875rem !important;
+        font-weight: 500 !important;
     }
     
-    .stDownloadButton button:hover,
-    [data-testid="stDownloadButton"] button:hover {
+    div[data-testid="stDownloadButton"] > button:hover,
+    .stDownloadButton > button:hover {
         background-color: #475569 !important;
-        border-color: #64748b !important;
+        border-color: #38bdf8 !important;
         color: #ffffff !important;
+        box-shadow: 0 0 10px rgba(56, 189, 248, 0.25) !important;
+    }
+
+    div[data-testid="stDownloadButton"] > button:active,
+    .stDownloadButton > button:active {
+        background-color: #1e293b !important;
+        border-color: #0284c7 !important;
+    }
+
+    div[data-testid="stDownloadButton"] > button p,
+    div[data-testid="stDownloadButton"] > button span,
+    .stDownloadButton > button p,
+    .stDownloadButton > button span {
+        font-size: 0.875rem !important;
+        font-weight: 500 !important;
+        color: inherit !important;
+        line-height: inherit !important;
+        margin: 0 !important;
+        padding: 0 !important;
     }
     
     /* Make the file uploader button completely transparent but clickable overlay */
