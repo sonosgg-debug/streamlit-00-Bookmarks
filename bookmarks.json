@@ -86,7 +86,7 @@
   {
     "id": "fae786b7-662a-4971-b0a6-79ab66894d7f",
     "name": "☆ Fundamental Analysis",
-    "url": "https://app-08-financialchart.streamlit.app/",
+    "url": "https://app-08-fundamentalanalysis.streamlit.app/",
     "color": "yellow"
   },
   {
@@ -98,7 +98,7 @@
   {
     "id": "581fabda-f213-4042-a23a-f6a279b7d850",
     "name": "☆ Technical Analysis Pro",
-    "url": "https://app-17-chartreading.streamlit.app/",
+    "url": "https://app-17-technicalanalysis.streamlit.app/",
     "color": "yellow"
   },
   {
