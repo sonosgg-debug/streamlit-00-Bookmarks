@@ -1,3 +1,6 @@
+import socket
+socket.setdefaulttimeout(5.0)
+
 import streamlit as st
 import streamlit.components.v1 as components
 import json
