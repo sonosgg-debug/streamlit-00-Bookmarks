@@ -96,8 +96,11 @@ st.markdown("""
         font-weight: 800 !important;
     }
     
-    section[data-testid="stSidebar"] h1 {
+    section[data-testid="stSidebar"] h1,
+    section[data-testid="stSidebar"] h2,
+    section[data-testid="stSidebar"] h3 {
         color: #f8fafc !important;
+        -webkit-text-fill-color: #f8fafc !important;
     }
     
     h2, h3 {
@@ -540,7 +543,20 @@ def clean_url(url):
 
 # 4. Sidebar Content (Form for Create/Edit, and Import/Export)
 with st.sidebar:
-    st.title("⚙️ 관리 패널")
+    st.markdown(
+        """
+        <div style='padding: 2px 0 12px 0;'>
+            <div style='font-size: 1.25rem; font-weight: 700; color: #f8fafc; letter-spacing: -0.01em; display: flex; align-items: center; gap: 8px;'>
+                <span>⚙️</span> 관리 패널
+            </div>
+            <div style='font-size: 0.82rem; color: #94a3b8; margin-top: 4px; line-height: 1.4;'>
+                북마크 추가, 수정 및 백업 데이터를 관리합니다.
+            </div>
+        </div>
+        <hr style='border: 0; height: 1px; background-color: #334155; margin: 10px 0 16px 0;'>
+        """,
+        unsafe_allow_html=True
+    )
     
     # A. Add / Edit Bookmark Section
     if st.session_state.edit_id is not None:
