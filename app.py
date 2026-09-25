@@ -547,7 +547,7 @@ with st.sidebar:
         """
         <div style='padding: 2px 0 12px 0;'>
             <div style='font-size: 1.25rem; font-weight: 700; color: #f8fafc; letter-spacing: -0.01em; display: flex; align-items: center; gap: 8px;'>
-                <span>⚙️</span> 관리 패널
+                <span>⚙️</span> 북마크 관리
             </div>
             <div style='font-size: 0.82rem; color: #94a3b8; margin-top: 4px; line-height: 1.4;'>
                 북마크 추가, 수정 및 백업 데이터를 관리합니다.
@@ -722,7 +722,7 @@ if search_query.strip() != "":
 
 # B. Render Grid of Bookmarks
 if len(filtered_bookmarks) == 0:
-    st.info("등록된 북마크가 없습니다. 왼쪽 관리 패널에서 북마크를 생성하거나 백업 파일을 불러오세요.")
+    st.info("등록된 북마크가 없습니다. 왼쪽 사이드바(북마크 관리)에서 북마크를 생성하거나 백업 파일을 불러오세요.")
 else:
     # Render the custom Drag-and-Drop Grid Component
     event = dnd_grid(bookmarks=filtered_bookmarks, delete_id=st.session_state.delete_id, key="dnd_grid_component")
