@@ -23,6 +23,11 @@ st.markdown("""
         color: #f8fafc;
     }
     
+    /* Streamlit 고정 상단 헤더 배경 투명화 */
+    header[data-testid="stHeader"] {
+        background: transparent !important;
+    }
+
     /* Main Content Area - reduce top padding to pull title up */
     .main .block-container,
     [data-testid="stMainBlockContainer"] {
@@ -560,7 +565,7 @@ with st.sidebar:
     
     # A. Add / Edit Bookmark Section
     if st.session_state.edit_id is not None:
-        st.subheader("✏️ 북마크 수정")
+        st.markdown("<div style='font-size: 0.95rem; font-weight: 700; color: #e2e8f0; margin-bottom: 6px;'>✏️ 북마크 수정</div>", unsafe_allow_html=True)
         # Find existing item
         edit_item = next((item for item in st.session_state.bookmarks if item['id'] == st.session_state.edit_id), None)
         if edit_item:
@@ -613,7 +618,7 @@ with st.sidebar:
             st.session_state.edit_id = None
             st.rerun()
     else:
-        st.subheader("➕ 새 북마크 추가")
+        st.markdown("<div style='font-size: 0.95rem; font-weight: 700; color: #e2e8f0; margin-bottom: 6px;'>➕ 새 북마크 추가</div>", unsafe_allow_html=True)
         new_name = st.text_input("Name (이름)", placeholder="예: 네이버 증권", key="new_name")
         new_url = st.text_input("URL (주소)", placeholder="예: finance.naver.com", key="new_url")
         
@@ -659,7 +664,7 @@ with st.sidebar:
     st.markdown("---")
     
     # B. Backup & Restore Section (Import/Export JSON)
-    st.subheader("💾 데이터 백업 및 복원")
+    st.markdown("<div style='font-size: 0.95rem; font-weight: 700; color: #e2e8f0; margin-bottom: 6px;'>💾 데이터 백업 및 복원</div>", unsafe_allow_html=True)
     st.caption("북마크 데이터를 로컬에 백업해 두세요.")
     
     # Export
