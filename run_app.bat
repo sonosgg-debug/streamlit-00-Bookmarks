@@ -52,7 +52,7 @@ echo   - 앱을 종료하려면 이 콘솔 창에서 [Ctrl + C]를 누르세요.
 echo ===================================================
 echo.
 
-python -m streamlit run app.py %*
+python -m streamlit run app.py --server.headless false %*
 
 if %ERRORLEVEL% neq 0 (
     echo.
