@@ -1,10 +1,25 @@
-import streamlit as st
-import streamlit.components.v1 as components
-import json
+import sys
+# Python 3.12+ 및 Streamlit Cloud 환경에서 pkg_resources 의존성 결함 방어용 Mock Shim
+try:
+    import pkg_resources
+except Exception:
+    try:
+        import setuptools.command
+        import pkg_resources
+    except Exception:
+        import types
+        pkg_mock = types.ModuleType("pkg_resources")
+        pkg_mock.resource_filename = lambda *args, **kwargs: ""
+        pkg_mock.resource_string = lambda *args, **kwargs: b""
+        pkg_mock.Requirement = type("Requirement", (), {"parse": lambda s: s})
+        pkg_mock.get_distribution = lambda *args, **kwargs: type("Dist", (), {"version": "1.0.0"})()
+        sys.modules["pkg_resources"] = pkg_mock
+
 import os
-import uuid
+import streamlit as st
 
 # 1. Page Configuration
+# [가이드 05] Streamlit 명령 최우선 실행 보장 (StreamlitAPIException 및 무한 로딩 방어)
 FAVICON_PATH = os.path.join(os.path.dirname(__file__), "favicon.png")
 
 st.set_page_config(
@@ -13,6 +28,10 @@ st.set_page_config(
     layout="wide",
     initial_sidebar_state="expanded"
 )
+
+import streamlit.components.v1 as components
+import json
+import uuid
 
 # 2. Custom CSS for visually appealing interface
 st.markdown("""
