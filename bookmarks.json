@@ -156,6 +156,18 @@
     "color": "purple"
   },
   {
+    "id": "78ddf28f-9185-4cb4-ba39-d29d72b9af0e",
+    "name": "My Oracle Cloud",
+    "url": "https://idcs-8139dacb7c1c4ff681f746baf17d4486.identity.oraclecloud.com/ui/v1/signin",
+    "color": "purple"
+  },
+  {
+    "id": "c147d142-f186-4eed-9b66-0f0f04ebbcb3",
+    "name": "My Oracle Dashboard",
+    "url": "http://168.110.34.155:8501/",
+    "color": "purple"
+  },
+  {
     "id": "901e3696-60f3-45c5-bb88-b6dce2c9c8db",
     "name": "GenPort 포트AI",
     "url": "https://portai.newsystock.com/",
