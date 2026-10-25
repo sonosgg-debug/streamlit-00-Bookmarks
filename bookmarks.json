@@ -12,6 +12,12 @@
     "color": "orange"
   },
   {
+    "id": "736de3ec-d1ab-40ff-a774-6b0e878eb8e3",
+    "name": "Market Balance",
+    "url": "https://app-22-marketbalance.streamlit.app/",
+    "color": "orange"
+  },
+  {
     "id": "b59ec157-8474-48cb-9fc3-6e647c42a55e",
     "name": "After Market Rally",
     "url": "https://app-21-aftermarketrally.streamlit.app/",
