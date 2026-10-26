@@ -164,7 +164,7 @@
   {
     "id": "78ddf28f-9185-4cb4-ba39-d29d72b9af0e",
     "name": "My Oracle Cloud",
-    "url": "https://idcs-8139dacb7c1c4ff681f746baf17d4486.identity.oraclecloud.com/ui/v1/signin",
+    "url": "https://www.oracle.com/cloud/sign-in.html?redirect_uri=https%3A%2F%2Fcloud.oracle.com%2F",
     "color": "purple"
   },
   {
