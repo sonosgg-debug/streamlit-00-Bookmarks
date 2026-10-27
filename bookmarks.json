@@ -18,12 +18,6 @@
     "color": "orange"
   },
   {
-    "id": "b59ec157-8474-48cb-9fc3-6e647c42a55e",
-    "name": "After Market Rally",
-    "url": "https://app-21-aftermarketrally.streamlit.app/",
-    "color": "orange"
-  },
-  {
     "id": "af5265c3-06c0-45f3-a905-322ce136bdf2",
     "name": "SKHY(ADR) 프리미엄 추이",
     "url": "https://app-09-skhyadrp.streamlit.app/",
@@ -46,6 +40,12 @@
     "name": "주식 vs 부동산",
     "url": "https://app-16-realestate.streamlit.app/",
     "color": "orange"
+  },
+  {
+    "id": "b59ec157-8474-48cb-9fc3-6e647c42a55e",
+    "name": "After Market Rally",
+    "url": "https://app-21-aftermarketrally.streamlit.app/",
+    "color": "green"
   },
   {
     "id": "26c469bf-65cf-45e6-8e08-8105a8fc000f",
