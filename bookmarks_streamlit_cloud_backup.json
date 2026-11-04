@@ -1,0 +1,266 @@
+[
+  {
+    "id": "c6fb7d59-5ddc-44cd-a339-a66a0ffbc723",
+    "name": "Market Overview",
+    "url": "https://app-19-marketoverview.streamlit.app/",
+    "color": "orange"
+  },
+  {
+    "id": "38b414f6-4c1a-4b17-bed9-6524f115eb92",
+    "name": "Daily Briefing",
+    "url": "https://app-18-marketbriefing.streamlit.app/",
+    "color": "orange"
+  },
+  {
+    "id": "736de3ec-d1ab-40ff-a774-6b0e878eb8e3",
+    "name": "Market Balance",
+    "url": "https://app-22-marketbalance.streamlit.app/",
+    "color": "orange"
+  },
+  {
+    "id": "af5265c3-06c0-45f3-a905-322ce136bdf2",
+    "name": "SKHY(ADR) 프리미엄 추이",
+    "url": "https://app-09-skhyadrp.streamlit.app/",
+    "color": "orange"
+  },
+  {
+    "id": "de51ad68-98bc-4de4-9576-4e9dfa2dfc62",
+    "name": "Monthly Review",
+    "url": "https://app-15-monthlyreview.streamlit.app/",
+    "color": "orange"
+  },
+  {
+    "id": "8595ed36-0ff9-4090-968a-f9c86a8f3326",
+    "name": "Financial Report",
+    "url": "https://financial-report-sigma.vercel.app",
+    "color": "orange"
+  },
+  {
+    "id": "3dfc85ca-7807-41ad-a828-80011e5417f3",
+    "name": "주식 vs 부동산",
+    "url": "https://app-16-realestate.streamlit.app/",
+    "color": "orange"
+  },
+  {
+    "id": "b59ec157-8474-48cb-9fc3-6e647c42a55e",
+    "name": "After Market Rally",
+    "url": "https://app-21-aftermarketrally.streamlit.app/",
+    "color": "green"
+  },
+  {
+    "id": "26c469bf-65cf-45e6-8e08-8105a8fc000f",
+    "name": "William O'Neal",
+    "url": "https://app-02-cuphandle.streamlit.app",
+    "color": "green"
+  },
+  {
+    "id": "304f7c82-c381-4b01-8f97-f68f1ea1987d",
+    "name": "Mark Minervini",
+    "url": "https://app-04-markminervini.streamlit.app",
+    "color": "green"
+  },
+  {
+    "id": "36cd117a-8be0-4373-ba3d-d4c245eac6f0",
+    "name": "David Ryan",
+    "url": "https://app-01-justdrawline.streamlit.app/",
+    "color": "green"
+  },
+  {
+    "id": "25a42fac-7a2c-42f7-90e6-83bbc46c590e",
+    "name": "Majors 수급",
+    "url": "https://app-03-majorsnetbuy.streamlit.app",
+    "color": "green"
+  },
+  {
+    "id": "36b47afb-efa2-47a7-9d98-0a3ca1266360",
+    "name": "다중 지표 앙상블 모델",
+    "url": "https://app-20-multiindicatorensemble.streamlit.app/",
+    "color": "green"
+  },
+  {
+    "id": "c33215e0-0a6b-4e2c-a61e-5aecbb5be5c0",
+    "name": "우선주 vs 보통주",
+    "url": "https://app-12-preferredstock.streamlit.app/",
+    "color": "green"
+  },
+  {
+    "id": "3f999727-c324-49c4-9a9b-ac548684c12f",
+    "name": "배당주 TOP 100",
+    "url": "https://app-13-dividendstock.streamlit.app/",
+    "color": "green"
+  },
+  {
+    "id": "bc41f8fd-0c14-4511-bbd3-229422ad9920",
+    "name": "ETF Screener",
+    "url": "https://app-14-etfscreener.streamlit.app/",
+    "color": "green"
+  },
+  {
+    "id": "fae786b7-662a-4971-b0a6-79ab66894d7f",
+    "name": "☆ Fundamental Analysis",
+    "url": "https://app-08-fundamentalanalysis.streamlit.app/",
+    "color": "yellow"
+  },
+  {
+    "id": "0a5d988f-0f38-4cb3-ad7a-c3517b7730a3",
+    "name": "☆ Magic S-RIM 평가 모델",
+    "url": "https://app-10-magicsrim.streamlit.app/",
+    "color": "yellow"
+  },
+  {
+    "id": "581fabda-f213-4042-a23a-f6a279b7d850",
+    "name": "☆ Technical Analysis Pro",
+    "url": "https://app-17-technicalanalysis.streamlit.app/",
+    "color": "yellow"
+  },
+  {
+    "id": "799efe5c-5048-4361-928c-a6c297d9283a",
+    "name": "개별종목 투자자별 매매동향",
+    "url": "https://app-06-netbuyerchart.streamlit.app/",
+    "color": "yellow"
+  },
+  {
+    "id": "6917a8ae-01be-447e-95fd-300593fd79ae",
+    "name": "개별종목 공매도 현황",
+    "url": "https://app-07-shortsellingchart.streamlit.app/",
+    "color": "yellow"
+  },
+  {
+    "id": "db8e8161-3093-4632-8bea-82053d07a635",
+    "name": "종목별 PER 변화 추이 비교",
+    "url": "https://app-11-percomparison.streamlit.app/",
+    "color": "yellow"
+  },
+  {
+    "id": "5e92ab5c-01e4-4d90-bae7-7003bd9f50a8",
+    "name": "Winners 수익률 비교",
+    "url": "https://app-05-winnerschart.streamlit.app/",
+    "color": "yellow"
+  },
+  {
+    "id": "22962b59-0327-489f-8fd9-c9c949cede66",
+    "name": "My Github",
+    "url": "https://github.com",
+    "color": "purple"
+  },
+  {
+    "id": "1381be4c-238f-43d9-9557-1324d8042031",
+    "name": "My Streamlit",
+    "url": "https://share.streamlit.io/?utm_source=streamlit&utm_medium=referral&utm_campaign=main&utm_content=-ss-streamlit-io-cloudpagehero",
+    "color": "purple"
+  },
+  {
+    "id": "6f3707da-ea89-4743-8cfb-dd8c379013c8",
+    "name": "My Vercel",
+    "url": "https://vercel.com/sonosgg-debugs-projects",
+    "color": "purple"
+  },
+  {
+    "id": "4528bc96-cb84-480f-9d59-4744a77d76f1",
+    "name": "My Supabase",
+    "url": "https://supabase.com/dashboard/org/qqpiydxsanpjijsofgyf",
+    "color": "purple"
+  },
+  {
+    "id": "78ddf28f-9185-4cb4-ba39-d29d72b9af0e",
+    "name": "My Oracle Cloud",
+    "url": "https://www.oracle.com/cloud/sign-in.html?redirect_uri=https%3A%2F%2Fcloud.oracle.com%2F",
+    "color": "purple"
+  },
+  {
+    "id": "c147d142-f186-4eed-9b66-0f0f04ebbcb3",
+    "name": "My Oracle Dashboard",
+    "url": "http://168.110.34.155:8501/",
+    "color": "purple"
+  },
+  {
+    "id": "901e3696-60f3-45c5-bb88-b6dce2c9c8db",
+    "name": "GenPort 포트AI",
+    "url": "https://portai.newsystock.com/",
+    "color": "default"
+  },
+  {
+    "id": "6d9f86c5-f0db-4649-8230-e51c417aa034",
+    "name": "KRX Data Marketplace",
+    "url": "https://data.krx.co.kr/contents/MDC/MAIN/main/index.cmd",
+    "color": "default"
+  },
+  {
+    "id": "bc2794f0-2fe9-4d65-8d27-44f8bcac2c72",
+    "name": "금투협 종합통계",
+    "url": "https://freesis.kofia.or.kr/",
+    "color": "default"
+  },
+  {
+    "id": "cdcf0433-9aa2-4337-b9ad-a82f3af8bc03",
+    "name": "전자공시시스템(DART)",
+    "url": "https://dart.fss.or.kr/",
+    "color": "default"
+  },
+  {
+    "id": "7e221b30-db79-4b70-abf4-1479e3f70bf9",
+    "name": "Company Guide",
+    "url": "https://wcomp.fnguide.com"
+  },
+  {
+    "id": "55500653-ec6c-466c-82bf-cb011d420065",
+    "name": "IndexerGo",
+    "url": "https://www.indexergo.com"
+  },
+  {
+    "id": "1",
+    "name": "Naver Pay 증권",
+    "url": "https://stock.naver.com/",
+    "color": "default"
+  },
+  {
+    "id": "d6556c50-4de4-4c0a-bfe9-1f93e3cd039a",
+    "name": "KOSPI ADR",
+    "url": "http://adrinfo.kr/chart_indx",
+    "color": "default"
+  },
+  {
+    "id": "f402a17b-286d-4681-a270-c49ae61d509c",
+    "name": "KOSPI Fear&Greed",
+    "url": "https://feargreed.co.kr/",
+    "color": "default"
+  },
+  {
+    "id": "d8fd1dfa-32e0-4d13-9b52-a366436a626b",
+    "name": "FedWatch",
+    "url": "https://www.cmegroup.com/markets/interest-rates/cme-fedwatch-tool.html?redirect=/trading/interest-rates/countdown-to-fomc.html"
+  },
+  {
+    "id": "4",
+    "name": "TradingView",
+    "url": "https://kr.tradingview.com"
+  },
+  {
+    "id": "2",
+    "name": "Yahoo Finance",
+    "url": "https://finance.yahoo.com"
+  },
+  {
+    "id": "3",
+    "name": "Investing.com",
+    "url": "https://kr.investing.com"
+  },
+  {
+    "id": "b00c6f7f-5857-43b6-9a1c-3715c971112f",
+    "name": "FINVIZ Map",
+    "url": "https://finviz.com/map",
+    "color": "default"
+  },
+  {
+    "id": "8ff25780-93aa-4636-b4c8-0dd13c2753b3",
+    "name": "Portfolio Visualizer",
+    "url": "https://www.portfoliovisualizer.com/",
+    "color": "default"
+  },
+  {
+    "id": "2a7acf0c-1fac-4f17-9e0d-5e048119a6b1",
+    "name": "Seeking Alpha",
+    "url": "https://seekingalpha.com/",
+    "color": "default"
+  }
+]
