@@ -132,6 +132,12 @@
     "color": "yellow"
   },
   {
+    "id": "8595ed36-0ff9-4090-968a-f9c86a8f3326",
+    "name": "Financial Report",
+    "url": "https://financial-report-sigma.vercel.app",
+    "color": "orange"
+  },
+  {
     "id": "22962b59-0327-489f-8fd9-c9c949cede66",
     "name": "My Github",
     "url": "https://github.com",
@@ -165,12 +171,6 @@
     "id": "c147d142-f186-4eed-9b66-0f0f04ebbcb3",
     "name": "My Oracle Dashboard",
     "url": "http://168.110.34.155:8501/",
-    "color": "purple"
-  },
-  {
-    "id": "8595ed36-0ff9-4090-968a-f9c86a8f3326",
-    "name": "Financial Report",
-    "url": "https://financial-report-sigma.vercel.app",
     "color": "purple"
   },
   {
