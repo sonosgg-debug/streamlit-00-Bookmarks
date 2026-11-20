@@ -38,6 +38,7 @@ APP_MAPPING = [
     ("22 JustDrawtheLine", "22_JustDrawtheLine", 8522),
     ("25 MarkMinerviniMTT2", "25_MarkMinerviniMTT2", 8525),
     ("27 MajorsNetBuy", "27_MajorsNetBuy", 8527),
+    ("28 TradingStrategy", "28_TradingStrategy", 8528),
     ("29 MultiIndicatorEnsemble", "29_MultiIndicatorEnsemble", 8529),
     ("31 WinnersChart", "31_WinnersChart", 8531),
     ("32 FundamentalAnalysis", "32_FundamentalAnalysis", 8532),
@@ -143,6 +144,7 @@ def main():
         print("  python scripts/sync_to_oracle.py <app_name_or_number>")
         print("  python scripts/sync_to_oracle.py all")
         print("\nExamples:")
+        print("  python scripts/sync_to_oracle.py 06")
         print("  python scripts/sync_to_oracle.py 21")
         print("  python scripts/sync_to_oracle.py 39")
         print("  python scripts/sync_to_oracle.py '00 Bookmarks'")
@@ -157,6 +159,14 @@ def main():
                 success_count += 1
         print(f"\n[SUMMARY] {success_count}/{len(APP_MAPPING)} applications synced successfully!")
     else:
+        # Special handler for 06 MarketWatch (Telegram Bot Service)
+        if target_arg.lower() in ["06", "marketwatch", "06 marketwatch", "06_marketwatch"]:
+            deploy_script = ROOT_DIR / "06 MarketWatch" / "deploy_to_oracle.py"
+            if deploy_script.exists():
+                print(f"\n[MarketWatch] Delegating deployment to {deploy_script.name}...")
+                res = subprocess.run([sys.executable, str(deploy_script)])
+                sys.exit(res.returncode)
+
         # Match target
         matched = []
         for src, dst, port in APP_MAPPING:
@@ -166,6 +176,7 @@ def main():
         if not matched:
             print(f"[ERROR] Could not find any app matching '{target_arg}'.")
             print("Available apps:")
+            print("  - 06 MarketWatch (Telegram Bot Service)")
             for src, _, port in APP_MAPPING:
                 print(f"  - {src} (Port {port})")
             sys.exit(1)

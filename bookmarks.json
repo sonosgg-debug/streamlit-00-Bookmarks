@@ -66,6 +66,12 @@
     "color": "green"
   },
   {
+    "id": "e4b86f12-28a1-4d32-9c1a-8528strategy",
+    "name": "Trading Strategy (눌림목)",
+    "url": "http://168.110.38.90:8528/",
+    "color": "green"
+  },
+  {
     "id": "36b47afb-efa2-47a7-9d98-0a3ca1266360",
     "name": "다중 지표 앙상블 모델",
     "url": "http://168.110.38.90:8529/",
