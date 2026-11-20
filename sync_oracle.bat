@@ -15,6 +15,7 @@ if "%APP_TARGET%"=="" (
     echo.
     echo [Examples]
     echo   sync_oracle.bat 21
+    echo   sync_oracle.bat 28
     echo   sync_oracle.bat 39
     echo   sync_oracle.bat all
     echo.
