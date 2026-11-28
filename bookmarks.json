@@ -30,18 +30,6 @@
     "color": "orange"
   },
   {
-    "id": "06-marketwatch-8506",
-    "name": "Market Watch",
-    "url": "http://168.110.38.90:8506/",
-    "color": "orange"
-  },
-  {
-    "id": "07-beforesunrise-8507",
-    "name": "Before Sunrise",
-    "url": "http://168.110.38.90:8507/",
-    "color": "orange"
-  },
-  {
     "id": "3dfc85ca-7807-41ad-a828-80011e5417f3",
     "name": "주식 vs 부동산",
     "url": "http://168.110.38.90:8545/",
@@ -153,6 +141,18 @@
     "id": "8595ed36-0ff9-4090-968a-f9c86a8f3326",
     "name": "Financial Report",
     "url": "https://financial-report-sigma.vercel.app",
+    "color": "orange"
+  },
+  {
+    "id": "07-beforesunrise-8507",
+    "name": "Before Sunrise",
+    "url": "http://168.110.38.90:8507/",
+    "color": "orange"
+  },
+  {
+    "id": "06-marketwatch-8506",
+    "name": "Market Watch",
+    "url": "http://168.110.38.90:8506/",
     "color": "orange"
   },
   {
