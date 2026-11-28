@@ -10,6 +10,7 @@ import sys
 import time
 import json
 import argparse
+import subprocess
 from datetime import datetime
 from pathlib import Path
 
@@ -104,6 +105,27 @@ def issue_token(app_key: str, app_secret: str):
         return None, err_msg
 
 
+def sync_to_server2(token_file: Path):
+    """Syncs the shared KIS token to Server 2 (168.110.34.155) for 99 InvestingwithAI."""
+    s2_host = "ubuntu@168.110.34.155"
+    s2_dest = f"{s2_host}:/home/ubuntu/InvestingwithAI/kis_token.json"
+
+    if os.name == 'nt':
+        key_file = Path(r"D:\AI Investing\00 API Key\ssh-key-2026-10-24.key")
+        if not key_file.exists():
+            return
+        cmd = ["scp", "-i", str(key_file), "-o", "StrictHostKeyChecking=no", "-o", "ConnectTimeout=5", str(token_file), s2_dest]
+    else:
+        cmd = ["scp", "-o", "StrictHostKeyChecking=no", "-o", "ConnectTimeout=5", str(token_file), s2_dest]
+
+    try:
+        res = subprocess.run(cmd, capture_output=True, timeout=10)
+        if res.returncode == 0:
+            print(f"[SYNC] Successfully synced shared KIS token to Server 2 ({s2_dest})")
+    except Exception as e:
+        print(f"[SYNC] Warning: Could not sync token to Server 2: {e}")
+
+
 def manage_token(force: bool = False):
     token_file, env_files, log_file = get_default_paths()
     now_ts = time.time()
@@ -133,6 +155,7 @@ def manage_token(force: bool = False):
                         f"Skipping issuance to strictly honor KIS 1-per-day policy."
                     )
                     print(msg)
+                    sync_to_server2(token_file)
                     return True
         except Exception as e:
             print(f"[{now_str}] [WARN] Cache reading error: {e}")
@@ -168,6 +191,7 @@ def manage_token(force: bool = False):
         f"         Expires at: {token_data['expires_at_kst']}"
     )
     print(success_msg)
+    sync_to_server2(token_file)
     return True
 
 
