@@ -33,6 +33,7 @@ APP_MAPPING = [
     ("03 MarketBalance", "03_MarketBalance", 8503),
     ("04 AfterMarketRally", "04_AfterMarketRally", 8504),
     ("05 MonthlyReview", "05_MonthlyReview", 8505),
+    ("06 MarketWatch", "06_MarketWatch", 8506),
     ("07 BeforeSunrise", "07_BeforeSunrise", 8507),
     ("11 MagicS-RIM2", "11_MagicS-RIM2", 8511),
     ("21 CupWithHandle2", "21_CupWithHandle2", 8521),
@@ -115,6 +116,11 @@ def sync_single_app(src_folder, dst_folder, port):
             f"rm -f {REMOTE_BASE}/tmp_sync.tar.gz && "
             f"python3 {REMOTE_BASE}/manager.py restart {dst_folder}"
         )
+        if dst_folder == "06_MarketWatch":
+            remote_cmds += (
+                f" && cp -f {REMOTE_BASE}/06_MarketWatch/*.py /home/ubuntu/MarketWatch/ 2>/dev/null || true && "
+                f"sudo systemctl restart marketwatch.service"
+            )
         res_ssh = run_ssh(remote_cmds)
         if res_ssh.returncode == 0:
             print(f"[OK]   Successfully synced & restarted on Port {port}!")
@@ -160,14 +166,6 @@ def main():
                 success_count += 1
         print(f"\n[SUMMARY] {success_count}/{len(APP_MAPPING)} applications synced successfully!")
     else:
-        # Special handler for 06 MarketWatch (Telegram Bot Service)
-        if target_arg.lower() in ["06", "marketwatch", "06 marketwatch", "06_marketwatch"]:
-            deploy_script = ROOT_DIR / "06 MarketWatch" / "deploy_to_oracle.py"
-            if deploy_script.exists():
-                print(f"\n[MarketWatch] Delegating deployment to {deploy_script.name}...")
-                res = subprocess.run([sys.executable, str(deploy_script)])
-                sys.exit(res.returncode)
-
         # Match target
         matched = []
         for src, dst, port in APP_MAPPING:
@@ -177,7 +175,6 @@ def main():
         if not matched:
             print(f"[ERROR] Could not find any app matching '{target_arg}'.")
             print("Available apps:")
-            print("  - 06 MarketWatch (Telegram Bot Service)")
             for src, _, port in APP_MAPPING:
                 print(f"  - {src} (Port {port})")
             sys.exit(1)

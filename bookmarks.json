@@ -30,6 +30,12 @@
     "color": "orange"
   },
   {
+    "id": "06-marketwatch-8506",
+    "name": "Market Watch",
+    "url": "http://168.110.38.90:8506/",
+    "color": "orange"
+  },
+  {
     "id": "07-beforesunrise-8507",
     "name": "Before Sunrise",
     "url": "http://168.110.38.90:8507/",
