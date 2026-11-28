@@ -33,6 +33,7 @@ APP_MAPPING = [
     ("03 MarketBalance", "03_MarketBalance", 8503),
     ("04 AfterMarketRally", "04_AfterMarketRally", 8504),
     ("05 MonthlyReview", "05_MonthlyReview", 8505),
+    ("07 BeforeSunrise", "07_BeforeSunrise", 8507),
     ("11 MagicS-RIM2", "11_MagicS-RIM2", 8511),
     ("21 CupWithHandle2", "21_CupWithHandle2", 8521),
     ("22 JustDrawtheLine", "22_JustDrawtheLine", 8522),
